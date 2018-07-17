@@ -164,7 +164,7 @@ table {
         position: fixed;
         height: 100%;
         width: 30px;
-        background-color:#1661AD;
+        background-color:#6C734A;
         color: white!important;
         cursor: pointer;
         z-index: 100;
@@ -239,8 +239,8 @@ table {
 }
 
 #toc .toc-active, #toc li:hover {
-    background: #1661AD;
-    box-shadow: inset -5px 0px 10px -5px #1661AD!important;
+    background: #6C734A;
+    box-shadow: inset -5px 0px 10px -5px #6C734A!important;
 
 }
 
@@ -331,11 +331,11 @@ p.document-stage {
 
 
 #standard-band,  #published-band {
-    background-color: #9ABD48;
+    background-color: #007864;
 }
 
 #standard, #published {
-    border-bottom: solid 3px #9ABD48;
+    border-bottom: solid 3px #007864;
 }
 
 #governance, #policy-and-procedures {
@@ -387,11 +387,11 @@ p.document-stage {
 }
 
 #standard {
-    border-bottom: solid 3px #9ABD48;
+    border-bottom: solid 3px #007864;
 }
 
 #standard-band {
-    background-color: #9ABD48;
+    background-color: #007864;
 }
 
 #obsolete {
@@ -412,7 +412,7 @@ p.document-stage {
 
   h1,h2,h3,h4,h5,h6 {
     font-family: $headerfont;
-    color: #1661AD;
+    color: #6C734A;
     font-weight: 300;
     margin-top: 1.6em;
     margin-bottom: 0.3em;
@@ -441,7 +441,7 @@ p.document-stage {
   }
 
   .TermNum, .Terms, .AltTerms {
-    color: #1661AD;
+    color: #6C734A;
     font-weight: 100;
   }
 
@@ -474,17 +474,17 @@ p.document-stage {
 
     a:hover {
         color: white;
-        background: #1661AD;
-        box-shadow: 3px 0 0 #1661AD, -3px 0 0 #1661AD;
+        background: #6C734A;
+        box-shadow: 3px 0 0 #6C734A, -3px 0 0 #6C734A;
         /* padding: 2px 0 2px 0; */
     }
 
     ::selection {
-        background: #1661AD; /* WebKit/Blink Browsers */
+        background: #6C734A; /* WebKit/Blink Browsers */
         color: white;
       }
       ::-moz-selection {
-        background: #1661AD; /* Gecko Browsers */
+        background: #6C734A; /* Gecko Browsers */
         color: white;
       }
 
@@ -686,15 +686,15 @@ a.footnote-number {
     width: 250px;
 
   text-align: left;
-  border: #1661AD solid 2px;
-  color: #1661AD!important;
+  border: #6C734A solid 2px;
+  color: #6C734A!important;
   border-radius: 25px;
 
 }
 
 .contact-info a,
 .contact-info a:hover {
-  color: #1661AD;
+  color: #6C734A;
 }
 
 .contact-info p, .contact-info a {
@@ -750,7 +750,7 @@ h2 p {
 }
 
 .wrapper-top {
-  background: linear-gradient(200deg, #0f365e, #1661AD);
+  background: linear-gradient(200deg, #007864, #6C734A);
   color: #ffffff;
   padding: 2em 0;
   width: 100%;
@@ -759,7 +759,7 @@ h2 p {
 .wrapper-top-bottom {
   width: 0;
   height: 0;
-  border-top: 100px solid #1661AD;
+  border-top: 100px solid #6C734A;
   border-right: 100px solid transparent;
   position: absolute;
 }
@@ -989,7 +989,7 @@ To top button
 
 
     h1.content {
-      margin-top: 2em; 
+      margin-top: 2em;
       line-height: 2.5em;
     }
 
