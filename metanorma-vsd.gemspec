@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
     This gem is in active development.
   DESCRIPTION
 
-  spec.homepage      = "https://github.com/riboseinc/metanorma-vsd"
+  spec.homepage      = "https://github.com/metanorma/metanorma-vsd"
   spec.license       = "BSD-2-Clause"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "metanorma"
   spec.add_dependency "isodoc", ">= 0.8.4"
 
-  spec.add_development_dependency "bundler", "~> 1.15"
+  spec.add_development_dependency "bundler", "~> 2"
   spec.add_development_dependency "byebug", "~> 9.1"
   spec.add_development_dependency "equivalent-xml", "~> 0.6"
   spec.add_development_dependency "guard", "~> 2.14"
