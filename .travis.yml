@@ -1,15 +1,16 @@
-dist: trusty
-sudo: false
 language: ruby
+cache: bundler
+os:
+- linux
+- osx
 rvm:
-  - 2.5
-  - 2.4
-  - ruby-head
+- 2.5
+- 2.4
+- ruby-head
 before_install:
-  - gem install bundler -v 1.16.1
-  - npm install -g puppeteer
-  - npm install
-  - unset _JAVA_OPTIONS
+- gem install bundler -v 2.0.1
+- bundle update
+- curl -L https://raw.githubusercontent.com/metanorma/metanorma-build-scripts/master/travis.sh | bash
 matrix:
   allow_failures:
     - rvm: ruby-head
