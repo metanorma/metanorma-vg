@@ -1,4 +1,4 @@
-require "asciidoctor/rsd/converter"
+require "asciidoctor/standoc/converter"
 require "isodoc/vsd"
 
 module Asciidoctor
@@ -7,7 +7,7 @@ module Asciidoctor
     # A {Converter} implementation that generates RSD output, and a document
     # schema encapsulation of the document for validation
     #
-    class Converter < Asciidoctor::Rsd::Converter
+    class Converter < Standoc::Converter
 
       register_for "vsd"
 
@@ -47,7 +47,7 @@ module Asciidoctor
         result << noko { |ixml| front node, ixml }
         result << noko { |ixml| middle node, ixml }
         result << "</vsd-standard>"
-        result = textcleanup(result.flatten * "\n")
+        result = textcleanup(result)
         ret1 = cleanup(Nokogiri::XML(result))
         validate(ret1)
         ret1.root.add_namespace(nil, IsoDoc::Vsd::DOCUMENT_NAMESPACE)
