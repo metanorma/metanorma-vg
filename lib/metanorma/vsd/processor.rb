@@ -1,8 +1,8 @@
-require "metanorma/rsd/processor"
+require "metanorma/processor"
 
 module Metanorma
   module Vsd
-    class Processor < Metanorma::Rsd::Processor
+    class Processor < Metanorma::Processor
 
       def initialize
         @short = :vsd
@@ -22,8 +22,8 @@ module Metanorma
         "Metanorma::Vsd #{Metanorma::Vsd::VERSION}"
       end
 
-      def input_to_isodoc(file)
-        Metanorma::Input::Asciidoc.new.process(file, @asciidoctor_backend)
+      def input_to_isodoc(file, filename)
+        Metanorma::Input::Asciidoc.new.process(file, filename, @asciidoctor_backend)
       end
 
       def output(isodoc_node, outname, format, options={})

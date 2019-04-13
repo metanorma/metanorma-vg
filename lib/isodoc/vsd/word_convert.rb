@@ -1,5 +1,4 @@
-require "isodoc"
-require "isodoc/rsd/word_convert"
+require "isodoc/word_convert"
 require_relative "metadata"
 
 module IsoDoc
@@ -7,33 +6,34 @@ module IsoDoc
     # A {Converter} implementation that generates Word output, and a document
     # schema encapsulation of the document for validation
 
-    class WordConvert < IsoDoc::Rsd::WordConvert
-      def vsd_html_path(file)
-        File.join(File.dirname(__FILE__), File.join("html", file))
-      end
-
+    class WordConvert < IsoDoc::WordConvert
       def initialize(options)
+        @libdir ||= File.dirname(__FILE__)
         super
-        @wordstylesheet = generate_css(vsd_html_path("wordstyle.scss"), false, default_fonts(options))
-        @standardstylesheet = generate_css(vsd_html_path("vsd.scss"), false, default_fonts(options))
-        @header = vsd_html_path("header.html")
-        @wordcoverpage = vsd_html_path("word_vsd_titlepage.html")
-        @wordintropage = vsd_html_path("word_vsd_intro.html")
-        @ulstyle = "l3"
-        @olstyle = "l2"
-        system "cp #{vsd_html_path('logo.png')} logo.png"
-        @files_to_delete << "logo.png"
       end
 
       def default_fonts(options)
-        b = options[:bodyfont] ||
-          (options[:script] == "Hans" ? '"SimSun",serif' :
-           '"Arial",sans-serif')
-        h = options[:headerfont] ||
-          (options[:script] == "Hans" ? '"SimHei",sans-serif' :
-           '"Arial",sans-serif')
-        m = options[:monospacefont] || '"Courier New",monospace'
-        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n"
+        {
+            bodyfont: (options[:script] == "Hans" ? '"SimSun",serif' : '"Arial",sans-serif'),
+            headerfont: (options[:script] == "Hans" ? '"SimHei",sans-serif' : '"Arial",sans-serif'),
+            monospacefont: '"Courier New",monospace'
+        }
+      end
+
+      def default_file_locations(options)
+        {
+            wordstylesheet: html_doc_path("wordstyle.scss"),
+            standardstylesheet: html_doc_path("vsd.scss"),
+            header: html_doc_path("header.html"),
+            wordcoverpage: html_doc_path("word_vsd_titlepage.html"),
+            wordintropage: html_doc_path("word_vsd_intro.html"),
+            ulstyle: "l3",
+            olstyle: "l2",
+        }
+      end
+
+      def metadata_init(lang, script, labels)
+        @meta = Metadata.new(lang, script, labels)
       end
 
       def make_body(xml, docxml)
