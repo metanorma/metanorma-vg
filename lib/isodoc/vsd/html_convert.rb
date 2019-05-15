@@ -1,4 +1,4 @@
-require "isodoc/rsd/html_convert"
+require "isodoc/html_convert"
 require_relative "metadata"
 
 module IsoDoc
@@ -7,30 +7,37 @@ module IsoDoc
     # A {Converter} implementation that generates HTML output, and a document
     # schema encapsulation of the document for validation
     #
-    class HtmlConvert < IsoDoc::Rsd::HtmlConvert
-      def vsd_html_path(file)
-        File.join(File.dirname(__FILE__), File.join("html", file))
+    class HtmlConvert < IsoDoc::HtmlConvert
+      def initialize(options)
+        @libdir ||= File.dirname(__FILE__)
+        super
       end
 
-      def initialize(options)
+      def convert1(docxml, filename, dir)
+        FileUtils.cp html_doc_path('logo.png'), File.join(@localdir, "logo.png")
+        @files_to_delete << File.join(@localdir, "logo.png")
         super
-        @htmlstylesheet = generate_css(vsd_html_path("htmlstyle.scss"), true, default_fonts(options))
-        @htmlcoverpage = vsd_html_path("html_vsd_titlepage.html")
-        @htmlintropage = vsd_html_path("html_vsd_intro.html")
-        @scripts = vsd_html_path("scripts.html")
-        system "cp #{vsd_html_path('logo.png')} logo.png"
-        @files_to_delete << "logo.png"
       end
 
       def default_fonts(options)
-        b = options[:bodyfont] ||
-          (options[:script] == "Hans" ? '"SimSun",serif' :
-           '"Overpass",sans-serif')
-        h = options[:headerfont] ||
-          (options[:script] == "Hans" ? '"SimHei",sans-serif' :
-           '"Overpass",sans-serif')
-        m = options[:monospacefont] || '"Space Mono",monospace'
-        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n"
+        {
+            bodyfont: (options[:script] == "Hans" ? '"SimSun",serif' : '"Overpass",sans-serif'),
+            headerfont: (options[:script] == "Hans" ? '"SimHei",sans-serif' : '"Overpass",sans-serif'),
+            monospacefont: '"Space Mono",monospace'
+        }
+      end
+
+      def default_file_locations(_options)
+        {
+          htmlstylesheet: html_doc_path("htmlstyle.scss"),
+          htmlcoverpage: html_doc_path("html_vsd_titlepage.html"),
+          htmlintropage: html_doc_path("html_vsd_intro.html"),
+          scripts: html_doc_path("scripts.html"),
+        }
+      end
+
+      def metadata_init(lang, script, labels)
+        @meta = Metadata.new(lang, script, labels)
       end
 
       def googlefonts
@@ -48,7 +55,6 @@ module IsoDoc
           make_body3(body, docxml)
         end
       end
-
     end
   end
 end
