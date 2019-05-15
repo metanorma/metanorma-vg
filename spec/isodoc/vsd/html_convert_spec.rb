@@ -23,7 +23,7 @@ RSpec.describe IsoDoc::Vsd do
   </contributor>
   <language>en</language>
   <script>Latn</script>
-  <status format="plain">working-draft</status>
+  <status><stage>working-draft</stage></status>
   <copyright>
     <from>2001</from>
     <owner>
@@ -46,7 +46,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-        {:accesseddate=>"XXX", :confirmeddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000(wd)", :doctitle=>"Main Title", :doctype=>"Standard", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :editorialgroup=>[], :ics=>"XXX", :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :obsoletes=>nil, :obsoletes_part=>nil, :publisheddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :sc=>"XXXX", :secretariat=>"XXXX", :security=>"Client Confidential", :status=>"Working Draft", :tc=>"TC", :updateddate=>"XXX", :wg=>"XXXX"}
+        {:accesseddate=>"XXX", :confirmeddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000(wd)", :doctitle=>"Main Title", :doctype=>"Standard", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :editorialgroup=>[], :ics=>"XXX", :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :obsoletes=>nil, :obsoletes_part=>nil, :publisheddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :sc=>"XXXX", :secretariat=>"XXXX", :security=>"Client Confidential", :stage=>"Working Draft", :tc=>"TC", :updateddate=>"XXX", :wg=>"XXXX"}
     OUTPUT
 
     docxml, filename, dir = csdc.convert_init(input, "test", true)
@@ -57,7 +57,7 @@ RSpec.describe IsoDoc::Vsd do
     input = <<~"INPUT"
 <vsd-standard xmlns="https://open.ribose.com/standards/vsd">
 <bibdata type="standard">
-  <status format="plain">committee-draft</status>
+  <status><stage>committee-draft</stage></status>
 </bibdata><version>
   <edition>2</edition>
   <revision-date>2000-01-01</revision-date>
@@ -68,7 +68,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :confirmeddate=>"XXX", :createddate=>"XXX", :docnumber=>"(cd)", :doctitle=>nil, :doctype=>"Standard", :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :editorialgroup=>[], :ics=>"XXX", :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :obsoletes=>nil, :obsoletes_part=>nil, :publisheddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :sc=>"XXXX", :secretariat=>"XXXX", :status=>"Committee Draft", :tc=>"XXXX", :updateddate=>"XXX", :wg=>"XXXX"}
+      {:accesseddate=>"XXX", :confirmeddate=>"XXX", :createddate=>"XXX", :docnumber=>"(cd)", :doctitle=>nil, :doctype=>"Standard", :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :editorialgroup=>[], :ics=>"XXX", :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :obsoletes=>nil, :obsoletes_part=>nil, :publisheddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :sc=>"XXXX", :secretariat=>"XXXX", :stage=>"Committee Draft", :tc=>"XXXX", :updateddate=>"XXX", :wg=>"XXXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
@@ -80,7 +80,7 @@ RSpec.describe IsoDoc::Vsd do
     input = <<~"INPUT"
 <vsd-standard xmlns="https://open.ribose.com/standards/vsd">
 <bibdata type="standard">
-  <status format="plain">draft-standard</status>
+  <status><stage>draft-standard</stage></status>
 </bibdata><version>
   <edition>2</edition>
   <revision-date>2000-01-01</revision-date>
@@ -91,7 +91,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :confirmeddate=>"XXX", :createddate=>"XXX", :docnumber=>"(d)", :doctitle=>nil, :doctype=>"Standard", :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :editorialgroup=>[], :ics=>"XXX", :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :obsoletes=>nil, :obsoletes_part=>nil, :publisheddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :sc=>"XXXX", :secretariat=>"XXXX", :status=>"Draft Standard", :tc=>"XXXX", :updateddate=>"XXX", :wg=>"XXXX"}
+      {:accesseddate=>"XXX", :confirmeddate=>"XXX", :createddate=>"XXX", :docnumber=>"(d)", :doctitle=>nil, :doctype=>"Standard", :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :editorialgroup=>[], :ics=>"XXX", :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :obsoletes=>nil, :obsoletes_part=>nil, :publisheddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :sc=>"XXXX", :secretariat=>"XXXX", :stage=>"Draft Standard", :tc=>"XXXX", :updateddate=>"XXX", :wg=>"XXXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
@@ -103,7 +103,7 @@ RSpec.describe IsoDoc::Vsd do
     input = <<~"INPUT"
 <vsd-standard xmlns="https://open.ribose.com/standards/vsd">
 <bibdata type="standard">
-  <status format="plain">standard</status>
+  <status><stage>standard</stage></status>
 </bibdata><version>
   <edition>2</edition>
   <revision-date>2000-01-01</revision-date>
@@ -114,7 +114,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :confirmeddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :doctitle=>nil, :doctype=>"Standard", :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :editorialgroup=>[], :ics=>"XXX", :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :obsoletes=>nil, :obsoletes_part=>nil, :publisheddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :sc=>"XXXX", :secretariat=>"XXXX", :status=>"Standard", :tc=>"XXXX", :updateddate=>"XXX", :wg=>"XXXX"}
+      {:accesseddate=>"XXX", :confirmeddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :doctitle=>nil, :doctype=>"Standard", :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :editorialgroup=>[], :ics=>"XXX", :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :obsoletes=>nil, :obsoletes_part=>nil, :publisheddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :sc=>"XXXX", :secretariat=>"XXXX", :stage=>"Standard", :tc=>"XXXX", :updateddate=>"XXX", :wg=>"XXXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
