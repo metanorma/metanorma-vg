@@ -1,8 +1,8 @@
 = Metanorma for VSD: Metanorma processor for Vitagreen Standard Documents (VSD)
 
-image:https://img.shields.io/gem/v/metanorma-rsd.svg["Gem Version", link="https://rubygems.org/gems/metanorma-rsd"]
-image:https://img.shields.io/travis/riboseinc/metanorma-rsd/master.svg["Build Status", link="https://travis-ci.org/riboseinc/metanorma-rsd"]
-image:https://codeclimate.com/github/riboseinc/metanorma-rsd/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/riboseinc/metanorma-rsd"]
+image:https://img.shields.io/gem/v/metanorma-vsd.svg["Gem Version", link="https://rubygems.org/gems/metanorma-vsd"]
+image:https://img.shields.io/travis/riboseinc/metanorma-vsd/master.svg["Build Status", link="https://travis-ci.org/riboseinc/metanorma-vsd"]
+image:https://codeclimate.com/github/riboseinc/metanorma-vsd/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/riboseinc/metanorma-vsd"]
 image:https://ci.appveyor.com/api/projects/status/525uihjhrm2e9s4f?svg=true["Appveyor Build Status", link="https://ci.appveyor.com/project/ribose/metanorma-vsd"]
 
 
@@ -41,10 +41,10 @@ The preferred way to invoke this gem is via the `metanorma` script:
 
 [source,console]
 ----
-$ metanorma --type rsd a.adoc                   # output HTML and DOC
-$ metanorma --type rsd --extensions html a.adoc # output just HTML
-$ metanorma --type rsd --extensions doc a.adoc  # output just DOC
-$ metanorma --type rsd --extensions xml a.adoc  # output VSD XML
+$ metanorma --type vsd a.adoc                   # output HTML and DOC
+$ metanorma --type vsd --extensions html a.adoc # output just HTML
+$ metanorma --type vsd --extensions doc a.adoc  # output just DOC
+$ metanorma --type vsd --extensions xml a.adoc  # output VSD XML
 ----
 
 The gem translates the document into VSD XML format, and then
@@ -55,12 +55,6 @@ document.
 
 The gem then converts the XML into HTML and PDF.
 
-The gem can also be invoked directly within asciidoctor, though this is deprecated:
-
-[source,console]
-----
-$ asciidoctor -b rsd -r 'asciidoctor-rsd' a.adoc  
-----
 
 === Installation
 
@@ -71,7 +65,7 @@ scripts such as this one. You need only run the following in a Terminal console:
 [source,console]
 ----
 $ bash <(curl -s https://raw.githubusercontent.com/riboseinc/metanorma-macos-setup/master/metanorma-setup)
-$ gem install asciidoctor-rsd
+$ gem install metanorma-vsd
 ----
 
 
@@ -165,7 +159,7 @@ these are otherwise suppressed.
 The VSD Standard Document format is an instance of the
 https://github.com/riboseinc/isodoc-models[StandardDocument model]. Details of
 this general model can be found on its page. Details of the VSD modifications
-to this general model can be found on the https://github.com/riboseinc/rsd[VSD model]
+to this general model can be found on the https://github.com/riboseinc/metanorma-model-vsd[VSD model]
 repository.
 
 == Examples
