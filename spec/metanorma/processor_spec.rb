@@ -15,7 +15,7 @@ RSpec.describe Metanorma::Vsd::Processor do
 
   it "registers output formats against metanorma" do
     expect(processor.output_formats.sort.to_s).to be_equivalent_to <<~"OUTPUT"
-    [[:doc, "doc"], [:html, "html"], [:pdf, "pdf"], [:xml, "xml"]]
+    [[:doc, "doc"], [:html, "html"], [:pdf, "pdf"], [:rxl, "rxl"], [:xml, "xml"]]
     OUTPUT
   end
 
@@ -52,15 +52,14 @@ RSpec.describe Metanorma::Vsd::Processor do
     INPUT
 
     output = <<~"OUTPUT"
-    <main class="main-section">
-      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-      <p class="zzSTDTitle1"></p>
-      <div id="H">
-        <h1>1.&#xA0; Terms and definitions</h1>
-        <p>For the purposes of this document, the following terms and definitions apply.</p>
-        <h2 class="TermNum" id="J">1.1&#xA0;<p class="Terms" style="text-align:left;">Term2</p></h2>
-      </div>
-    </main>
+           <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+             <p class="zzSTDTitle1"></p>
+             <div id="H"><h1>1.&#xA0; Terms and definitions</h1><p>For the purposes of this document,
+           the following terms and definitions apply.</p>
+       <h2 class="TermNum" id="J">1.1.</h2>
+               <p class="Terms" style="text-align:left;">Term2</p>
+             </div>
+           </main>
     OUTPUT
 
     processor.output(input, "test.html", :html)

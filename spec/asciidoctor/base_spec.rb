@@ -1,14 +1,6 @@
 require "spec_helper"
 
 RSpec.describe Asciidoctor::Vsd do
-
-  it "generates output for the Rice document" do
-    system "cd spec/examples; rm -f rfc6350.doc; rm -f rfc6350.html; rm -d rfc6350.pdf; asciidoctor --trace -b vsd -r 'metanorma-vsd' rfc6350.adoc; cd ../.."
-    expect(File.exist?("spec/examples/rfc6350.doc")).to be true
-    expect(File.exist?("spec/examples/rfc6350.html")).to be true
-    expect(File.exist?("spec/examples/rfc6350.pdf")).to be true
-  end
-
   it "processes a blank document" do
     input = <<~"INPUT"
     #{ASCIIDOC_BLANK_HDR}
@@ -76,8 +68,9 @@ RSpec.describe Asciidoctor::Vsd do
     <?xml version="1.0" encoding="UTF-8"?>
 <vsd-standard xmlns="https://open.ribose.com/standards/vsd">
 <bibdata type="standard">
-  <title language="en" format="plain">Main Title</title>
+  <title language="en" format="text/plain">Main Title</title>
   <docidentifier>1000</docidentifier>
+  <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
     <organization>
@@ -90,6 +83,11 @@ RSpec.describe Asciidoctor::Vsd do
       <name>#{Metanorma::Vsd::ORGANIZATION_NAME}</name>
     </organization>
   </contributor>
+  <edition>2</edition>
+<version>
+  <revision-date>2000-01-01</revision-date>
+  <draft>3.4</draft>
+</version>
   <language>en</language>
   <script>Latn</script>
   <status>
@@ -104,15 +102,10 @@ RSpec.describe Asciidoctor::Vsd do
       </organization>
     </owner>
   </copyright>
-  <editorialgroup>
-    <committee type="A">TC</committee>
-  </editorialgroup>
-  <security>Client Confidential</security>
-</bibdata><version>
-  <edition>2</edition>
-  <revision-date>2000-01-01</revision-date>
-  <draft>3.4</draft>
-</version>
+<ext>
+  <doctype>standard</doctype>
+</ext>
+</bibdata>
 <sections/>
 </vsd-standard>
     OUTPUT
@@ -138,7 +131,7 @@ RSpec.describe Asciidoctor::Vsd do
        <sections>
                 <figure id="id">
          <name>Figure 1</name>
-         <pre>This is a literal
+         <pre id="_">This is a literal
 
        Amen</pre>
        </figure>
@@ -163,7 +156,7 @@ RSpec.describe Asciidoctor::Vsd do
          <title>Foreword</title>
          <p id="_">This is a preamble</p>
        </foreword></preface><sections>
-       <clause id="_" obligation="normative">
+       <clause id="_" inline-header="false" obligation="normative">
          <title>Section 1</title>
        </clause></sections>
        </vsd-standard>
@@ -227,45 +220,5 @@ RSpec.describe Asciidoctor::Vsd do
     expect(html).to match(%r[ div[^{]+\{[^}]+font-family: Zapf Chancery;]m)
     expect(html).to match(%r[h1, h2, h3, h4, h5, h6 \{[^}]+font-family: Comic Sans;]m)
   end
-
-  it "processes inline_quoted formatting" do
-    input = <<~"INPUT"
-      #{ASCIIDOC_BLANK_HDR}
-      _emphasis_
-      *strong*
-      `monospace`
-      "double quote"
-      'single quote'
-      super^script^
-      sub~script~
-      stem:[a_90]
-      stem:[<mml:math><mml:msub xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"> <mml:mrow> <mml:mrow> <mml:mi mathvariant="bold-italic">F</mml:mi> </mml:mrow> </mml:mrow> <mml:mrow> <mml:mrow> <mml:mi mathvariant="bold-italic">&#x391;</mml:mi> </mml:mrow> </mml:mrow> </mml:msub> </mml:math>]
-      [keyword]#keyword#
-      [strike]#strike#
-      [smallcap]#smallcap#
-    INPUT
-
-    output = <<~"OUTPUT"
-            #{BLANK_HDR}
-       <sections>
-        <p id="_"><em>emphasis</em>
-       <strong>strong</strong>
-       <tt>monospace</tt>
-       "double quote"
-       'single quote'
-       super<sup>script</sup>
-       sub<sub>script</sub>
-       <stem type="AsciiMath">a_90</stem>
-       <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub> <mrow> <mrow> <mi mathvariant="bold-italic">F</mi> </mrow> </mrow> <mrow> <mrow> <mi mathvariant="bold-italic">Α</mi> </mrow> </mrow> </msub> </math></stem>
-       <keyword>keyword</keyword>
-       <strike>strike</strike>
-       <smallcap>smallcap</smallcap></p>
-       </sections>
-       </vsd-standard>
-    OUTPUT
-
-    expect(strip_guid(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
-  end
-
 end
 

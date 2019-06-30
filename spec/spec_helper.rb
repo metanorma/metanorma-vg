@@ -56,7 +56,7 @@ BLANK_HDR = <<~"HDR"
        <?xml version="1.0" encoding="UTF-8"?>
        <vsd-standard xmlns="https://open.ribose.com/standards/vsd">
        <bibdata type="standard">
-
+        <title language="en" format="text/plain">Document title</title>
 
          <contributor>
            <role type="author"/>
@@ -70,8 +70,11 @@ BLANK_HDR = <<~"HDR"
              <name>#{Metanorma::Vsd::ORGANIZATION_NAME}</name>
            </organization>
          </contributor>
-
+        <language>en</language>
          <script>Latn</script>
+<status>
+  <stage>published</stage>
+</status>
 
          <copyright>
            <from>#{Time.new.year}</from>
@@ -81,9 +84,9 @@ BLANK_HDR = <<~"HDR"
              </organization>
            </owner>
          </copyright>
-         <editorialgroup>
-           <committee/>
-         </editorialgroup>
+         <ext>
+        <doctype>standard</doctype>
+        </ext>
        </bibdata>
 HDR
 
