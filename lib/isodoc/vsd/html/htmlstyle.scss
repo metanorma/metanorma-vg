@@ -522,6 +522,14 @@ ul li:first-child {
   margin-top: 1em;
 }
 
+div.figure > img {
+margin-left: auto;
+margin-right: auto;
+display: block;
+max-width: 100%;
+height: auto;
+}
+
     #toc-list ul {margin-bottom: 0.25em;}
 
     #toc-list li {list-style-type: none;}
