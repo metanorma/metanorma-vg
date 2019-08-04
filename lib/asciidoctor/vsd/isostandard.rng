@@ -4,33 +4,6 @@
     <start>
       <ref name="iso-standard"/>
     </start>
-    <define name="language">
-      <element name="language">
-        <choice>
-          <value>en</value>
-          <value>fr</value>
-        </choice>
-      </element>
-    </define>
-    <define name="script">
-      <element name="script">
-        <value>Latn</value>
-      </element>
-    </define>
-    <!-- add type to docidentifier in isodoc? -->
-    <define name="docidentifier">
-      <element name="docidentifier">
-        <choice>
-          <text/>
-          <group>
-            <ref name="documentnumber"/>
-            <optional>
-              <ref name="tc-documentnumber"/>
-            </optional>
-          </group>
-        </choice>
-      </element>
-    </define>
     <define name="organization">
       <element name="organization">
         <ref name="orgname"/>
@@ -60,198 +33,41 @@
         </optional>
       </element>
     </define>
-    <define name="BibliographicItem">
+    <define name="BibDataExtensionType">
       <optional>
-        <attribute name="type">
-          <ref name="BibItemType"/>
-        </attribute>
+        <ref name="doctype"/>
       </optional>
-      <choice>
-        <oneOrMore>
-          <ref name="btitle"/>
-        </oneOrMore>
-        <ref name="formattedref"/>
-      </choice>
-      <zeroOrMore>
-        <ref name="bsource"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="docidentifier"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="bdate"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="contributor"/>
-      </zeroOrMore>
-      <optional>
-        <ref name="edition"/>
-      </optional>
-      <zeroOrMore>
-        <ref name="biblionote"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="language"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="script"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="abstract"/>
-      </zeroOrMore>
-      <optional>
-        <ref name="status"/>
-      </optional>
-      <optional>
-        <ref name="copyright"/>
-      </optional>
-      <zeroOrMore>
-        <ref name="docrelation"/>
-      </zeroOrMore>
-      <optional>
-        <ref name="editorialgroup"/>
-      </optional>
-      <zeroOrMore>
-        <ref name="ics"/>
-      </zeroOrMore>
-      <optional>
-        <ref name="allParts"/>
-      </optional>
-    </define>
-    <define name="BibData">
-      <optional>
-        <attribute name="type">
-          <ref name="BibItemType"/>
-        </attribute>
-      </optional>
-      <oneOrMore>
-        <ref name="btitle"/>
-      </oneOrMore>
-      <optional>
-        <ref name="formattedref"/>
-      </optional>
-      <zeroOrMore>
-        <ref name="bsource"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="docidentifier"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="bdate"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="contributor"/>
-      </zeroOrMore>
-      <optional>
-        <ref name="edition"/>
-      </optional>
-      <zeroOrMore>
-        <ref name="biblionote"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="language"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="script"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="abstract"/>
-      </zeroOrMore>
-      <optional>
-        <ref name="status"/>
-      </optional>
-      <ref name="copyright"/>
-      <zeroOrMore>
-        <ref name="docrelation"/>
-      </zeroOrMore>
       <ref name="editorialgroup"/>
       <zeroOrMore>
         <ref name="ics"/>
       </zeroOrMore>
-      <optional>
-        <ref name="allParts"/>
-      </optional>
+      <ref name="structuredidentifier"/>
     </define>
     <define name="bdate">
       <element name="date">
         <attribute name="type">
           <choice>
-            <value>published</value>
-            <value>accessed</value>
-            <value>created</value>
-            <value>implemented</value>
-            <value>obsoleted</value>
-            <value>confirmed</value>
-            <value>updated</value>
-            <value>issued</value>
+            <ref name="BibliographicDateType"/>
+            <text/>
           </choice>
         </attribute>
-        <!-- ( ( bfrom, bto? ) | date_on ) -->
         <choice>
           <group>
             <element name="from">
-              <choice>
-                <data type="gYear"/>
-                <data type="date"/>
-              </choice>
+              <ref name="ISO8601Date"/>
             </element>
             <optional>
               <element name="to">
-                <choice>
-                  <data type="gYear"/>
-                  <data type="date"/>
-                </choice>
+                <ref name="ISO8601Date"/>
               </element>
             </optional>
           </group>
           <element name="on">
             <choice>
-              <data type="gYear"/>
-              <data type="date"/>
+              <ref name="ISO8601Date"/>
               <value>--</value>
             </choice>
           </element>
-        </choice>
-      </element>
-    </define>
-    <define name="biblionote">
-      <element name="note">
-        <optional>
-          <!-- Biblio date notes can be footnoted -->
-          <attribute name="reference"/>
-        </optional>
-        <ref name="FormattedString"/>
-      </element>
-    </define>
-    <define name="status">
-      <element name="status">
-        <choice>
-          <ref name="FormattedString"/>
-          <group>
-            <ref name="stage"/>
-            <optional>
-              <ref name="substage"/>
-            </optional>
-            <optional>
-              <ref name="iteration"/>
-            </optional>
-          </group>
-        </choice>
-      </element>
-    </define>
-    <define name="btitle">
-      <element name="title">
-        <choice>
-          <ref name="FormattedString"/>
-          <group>
-            <optional>
-              <ref name="title-intro"/>
-            </optional>
-            <ref name="title-main"/>
-            <optional>
-              <ref name="title-part"/>
-            </optional>
-          </group>
         </choice>
       </element>
     </define>
@@ -275,6 +91,12 @@
         <attribute name="id">
           <data type="ID"/>
         </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
       </optional>
       <optional>
         <attribute name="obligation">
@@ -301,6 +123,12 @@
         <attribute name="id">
           <data type="ID"/>
         </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
       </optional>
       <optional>
         <attribute name="obligation">
@@ -332,6 +160,12 @@
         <attribute name="id">
           <data type="ID"/>
         </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
       </optional>
       <optional>
         <attribute name="inline-header">
@@ -397,6 +231,12 @@
           </attribute>
         </optional>
         <optional>
+          <attribute name="language"/>
+        </optional>
+        <optional>
+          <attribute name="script"/>
+        </optional>
+        <optional>
           <attribute name="obligation">
             <choice>
               <value>normative</value>
@@ -413,6 +253,12 @@
           <attribute name="id">
             <data type="ID"/>
           </attribute>
+        </optional>
+        <optional>
+          <attribute name="language"/>
+        </optional>
+        <optional>
+          <attribute name="script"/>
         </optional>
         <optional>
           <attribute name="obligation">
@@ -488,6 +334,12 @@
           </attribute>
         </optional>
         <optional>
+          <attribute name="language"/>
+        </optional>
+        <optional>
+          <attribute name="script"/>
+        </optional>
+        <optional>
           <attribute name="inline-header">
             <data type="boolean"/>
           </attribute>
@@ -548,10 +400,17 @@
     </define>
     <define name="li">
       <element name="li">
-        <oneOrMore>
-          <!-- ( paragraph-with-footnote | table | note | formula | admonition | ol | ul | dl | quote | sourcecode | review | example )+ -->
-          <ref name="BasicBlock"/>
-        </oneOrMore>
+        <group>
+          <optional>
+            <!-- ( paragraph-with-footnote | table | note | formula | admonition | ol | ul | dl | quote | sourcecode | review | example )+ -->
+            <attribute name="id">
+              <data type="ID"/>
+            </attribute>
+          </optional>
+          <oneOrMore>
+            <ref name="BasicBlock"/>
+          </oneOrMore>
+        </group>
         <!-- exclude figures? -->
       </element>
     </define>
@@ -681,6 +540,50 @@
         <ref name="paragraph"/>
       </element>
     </define>
+    <define name="preface">
+      <element name="preface">
+        <optional>
+          <ref name="preface_abstract"/>
+        </optional>
+        <ref name="foreword"/>
+        <optional>
+          <ref name="introduction"/>
+        </optional>
+      </element>
+    </define>
+    <define name="DocumentType">
+      <choice>
+        <value>international-standard</value>
+        <value>technical-specification</value>
+        <value>technical-report</value>
+        <value>publicly-available-specification</value>
+        <value>international-workshop-agreement</value>
+        <value>guide</value>
+      </choice>
+    </define>
+    <define name="structuredidentifier">
+      <element name="structuredidentifier">
+        <optional>
+          <attribute name="type"/>
+        </optional>
+        <group>
+          <ref name="documentnumber"/>
+          <optional>
+            <ref name="tc-documentnumber"/>
+          </optional>
+        </group>
+      </element>
+    </define>
+    <define name="foreword">
+      <element name="foreword">
+        <ref name="Basic-Section"/>
+      </element>
+    </define>
+    <define name="introduction">
+      <element name="introduction">
+        <ref name="Content-Section"/>
+      </element>
+    </define>
   </include>
   <!-- end overrides -->
   <!--
@@ -690,12 +593,12 @@
   <define name="iso-standard">
     <element name="iso-standard">
       <ref name="bibdata"/>
-      <optional>
-        <ref name="version"/>
-      </optional>
       <zeroOrMore>
         <ref name="termdocsource"/>
       </zeroOrMore>
+      <optional>
+        <ref name="boilerplate"/>
+      </optional>
       <ref name="preface"/>
       <oneOrMore>
         <ref name="sections"/>
@@ -704,14 +607,6 @@
         <ref name="annex"/>
       </zeroOrMore>
       <ref name="bibliography"/>
-    </element>
-  </define>
-  <define name="preface">
-    <element name="preface">
-      <ref name="foreword"/>
-      <optional>
-        <ref name="introduction"/>
-      </optional>
     </element>
   </define>
   <define name="bibliography">
@@ -724,72 +619,25 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="BibItemType" combine="choice">
-    <choice>
-      <value>international-standard</value>
-      <value>technical-specification</value>
-      <value>technical-report</value>
-      <value>publicly-available-specification</value>
-      <value>international-workshop-agreement</value>
-      <value>guide</value>
-    </choice>
-  </define>
   <define name="editorialgroup">
     <element name="editorialgroup">
-      <ref name="technical-committee"/>
-      <optional>
+      <oneOrMore>
+        <ref name="technical-committee"/>
+      </oneOrMore>
+      <zeroOrMore>
         <ref name="subcommittee"/>
-      </optional>
-      <optional>
+      </zeroOrMore>
+      <zeroOrMore>
         <ref name="workgroup"/>
-      </optional>
+      </zeroOrMore>
       <optional>
         <ref name="secretariat"/>
       </optional>
     </element>
   </define>
-  <define name="foreword">
-    <element name="foreword">
+  <define name="preface_abstract">
+    <element name="abstract">
       <ref name="Basic-Section"/>
-    </element>
-  </define>
-  <define name="introduction">
-    <element name="introduction">
-      <ref name="Content-Section"/>
-    </element>
-  </define>
-  <define name="stage">
-    <element name="stage">
-      <choice>
-        <value>00</value>
-        <value>10</value>
-        <value>20</value>
-        <value>30</value>
-        <value>40</value>
-        <value>50</value>
-        <value>60</value>
-        <value>90</value>
-        <value>95</value>
-      </choice>
-    </element>
-  </define>
-  <define name="substage">
-    <element name="substage">
-      <choice>
-        <value>00</value>
-        <value>20</value>
-        <value>60</value>
-        <value>90</value>
-        <value>92</value>
-        <value>93</value>
-        <value>98</value>
-        <value>99</value>
-      </choice>
-    </element>
-  </define>
-  <define name="iteration">
-    <element name="iteration">
-      <data type="int"/>
     </element>
   </define>
   <define name="documentnumber">
@@ -843,32 +691,18 @@
       <text/>
     </element>
   </define>
-  <define name="title-intro">
-    <element name="title-intro">
-      <ref name="FormattedString"/>
-    </element>
-  </define>
-  <define name="title-main">
-    <element name="title-main">
-      <ref name="FormattedString"/>
-    </element>
-  </define>
-  <define name="title-part">
-    <element name="title-part">
-      <ref name="FormattedString"/>
-    </element>
-  </define>
-  <define name="allParts">
-    <element name="allParts">
-      <data type="boolean"/>
-    </element>
-  </define>
   <define name="clause-hanging-paragraph-with-footnote">
     <element name="clause">
       <optional>
         <attribute name="id">
           <data type="ID"/>
         </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
       </optional>
       <optional>
         <attribute name="inline-header">
@@ -932,6 +766,12 @@
         </attribute>
       </optional>
       <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
+      </optional>
+      <optional>
         <attribute name="inline-header">
           <data type="boolean"/>
         </attribute>
@@ -947,17 +787,13 @@
       <optional>
         <ref name="section-title"/>
       </optional>
-      <choice>
-        <oneOrMore>
+      <zeroOrMore>
+        <choice>
           <ref name="term-clause"/>
-        </oneOrMore>
-        <zeroOrMore>
-          <choice>
-            <ref name="terms"/>
-            <ref name="definitions"/>
-          </choice>
-        </zeroOrMore>
-      </choice>
+          <ref name="terms"/>
+          <ref name="definitions"/>
+        </choice>
+      </zeroOrMore>
     </element>
   </define>
   <define name="reference-clause">
@@ -966,6 +802,12 @@
         <attribute name="id">
           <data type="ID"/>
         </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
       </optional>
       <optional>
         <attribute name="inline-header">
