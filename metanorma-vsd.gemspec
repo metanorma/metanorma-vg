@@ -29,9 +29,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "asciidoctor", "~> 1.5.7"
   spec.add_dependency "htmlentities", "~> 4.3.4"
   spec.add_dependency "nokogiri"
-  spec.add_dependency "metanorma-iso", "~> 1.2.0"
-  spec.add_dependency "metanorma"
-  spec.add_dependency "isodoc", "~> 0.10.0"
+  spec.add_dependency "metanorma-iso", "~> 1.3.0"
+  #spec.add_dependency "metanorma"
+  spec.add_dependency "isodoc", "~> 1.0.0"
 
   spec.add_development_dependency "bundler", "~> 2"
   spec.add_development_dependency "byebug", "~> 9.1"
