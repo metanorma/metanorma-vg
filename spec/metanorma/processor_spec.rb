@@ -54,8 +54,7 @@ RSpec.describe Metanorma::Vsd::Processor do
     output = <<~"OUTPUT"
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
              <p class="zzSTDTitle1"></p>
-             <div id="H"><h1>1.&#xA0; Terms and definitions</h1><p>For the purposes of this document,
-           the following terms and definitions apply.</p>
+             <div id="H"><h1>1.&#xA0; Terms and definitions</h1>
        <h2 class="TermNum" id="J">1.1.</h2>
                <p class="Terms" style="text-align:left;">Term2</p>
              </div>
