@@ -194,6 +194,14 @@
           <data type="boolean"/>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="subsequence"/>
+      </optional>
+      <optional>
+        <attribute name="inequality">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
       <ref name="stem"/>
       <optional>
         <ref name="dl"/>
@@ -248,6 +256,9 @@
         </attribute>
       </optional>
       <optional>
+        <attribute name="subsequence"/>
+      </optional>
+      <optional>
         <attribute name="lang"/>
       </optional>
       <optional>
@@ -292,7 +303,13 @@
         </attribute>
       </optional>
       <optional>
+        <attribute name="subsequence"/>
+      </optional>
+      <optional>
         <attribute name="alt"/>
+      </optional>
+      <optional>
+        <attribute name="summary"/>
       </optional>
       <optional>
         <attribute name="uri">
@@ -423,6 +440,9 @@
           <data type="boolean"/>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="subsequence"/>
+      </optional>
       <oneOrMore>
         <choice>
           <ref name="formula"/>
@@ -487,6 +507,9 @@
         </attribute>
       </optional>
       <optional>
+        <attribute name="subsequence"/>
+      </optional>
+      <optional>
         <ref name="source"/>
       </optional>
       <optional>
@@ -497,6 +520,8 @@
       </optional>
       <choice>
         <ref name="image"/>
+        <ref name="video"/>
+        <ref name="audio"/>
         <ref name="pre"/>
         <zeroOrMore>
           <ref name="figure"/>
@@ -792,7 +817,7 @@
     </element>
   </define>
   <define name="video">
-    <element name="image">
+    <element name="video">
       <attribute name="id">
         <data type="ID"/>
       </attribute>
@@ -833,7 +858,7 @@
     </element>
   </define>
   <define name="audio">
-    <element name="image">
+    <element name="audio">
       <attribute name="id">
         <data type="ID"/>
       </attribute>
