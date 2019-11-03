@@ -6,13 +6,13 @@ RSpec.describe Asciidoctor::Vsd do
     #{ASCIIDOC_BLANK_HDR}
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
     #{BLANK_HDR}
 <sections/>
 </vsd-standard>
     OUTPUT
 
-    expect(Asciidoctor.convert(input, backend: :vsd, header_footer: true)).to be_equivalent_to output
+    expect(xmlpp(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
   end
 
   it "converts a blank document" do
@@ -23,14 +23,14 @@ RSpec.describe Asciidoctor::Vsd do
       :novalid:
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
     #{BLANK_HDR}
 <sections/>
 </vsd-standard>
     OUTPUT
 
     system "rm -f test.html"
-    expect(Asciidoctor.convert(input, backend: :vsd, header_footer: true)).to be_equivalent_to output
+    expect(xmlpp(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
     expect(File.exist?("test.html")).to be true
   end
 
@@ -64,7 +64,7 @@ RSpec.describe Asciidoctor::Vsd do
       :security: Client Confidential
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
     <?xml version="1.0" encoding="UTF-8"?>
 <vsd-standard xmlns="https://open.ribose.com/standards/vsd">
 <bibdata type="standard">
@@ -110,7 +110,7 @@ RSpec.describe Asciidoctor::Vsd do
 </vsd-standard>
     OUTPUT
 
-    expect(Asciidoctor.convert(input, backend: :vsd, header_footer: true)).to be_equivalent_to output
+    expect(xmlpp(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
   end
 
   it "processes figures" do
@@ -126,7 +126,7 @@ RSpec.describe Asciidoctor::Vsd do
       ....
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
     #{BLANK_HDR}
        <sections>
                 <figure id="id">
@@ -139,7 +139,7 @@ RSpec.describe Asciidoctor::Vsd do
        </vsd-standard>
     OUTPUT
 
-    expect(strip_guid(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :vsd, header_footer: true)))).to be_equivalent_to output
   end
 
   it "strips inline header" do
@@ -150,7 +150,7 @@ RSpec.describe Asciidoctor::Vsd do
       == Section 1
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
     #{BLANK_HDR}
              <preface><foreword obligation="informative">
          <title>Foreword</title>
@@ -162,7 +162,7 @@ RSpec.describe Asciidoctor::Vsd do
        </vsd-standard>
     OUTPUT
 
-    expect(strip_guid(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :vsd, header_footer: true)))).to be_equivalent_to output
   end
 
   it "uses default fonts" do

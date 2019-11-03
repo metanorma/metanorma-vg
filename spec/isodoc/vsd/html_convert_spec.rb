@@ -45,12 +45,12 @@ RSpec.describe IsoDoc::Vsd do
 </vsd-standard>
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
         {:accesseddate=>"XXX", :agency=>"Vita Green", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000", :doctitle=>"Main Title", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :stage=>"Working Draft", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
     docxml, filename, dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
+    expect(xmlpp(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s))).to be_equivalent_to output
   end
 
   it "abbreviates committee-draft" do
@@ -67,13 +67,13 @@ RSpec.describe IsoDoc::Vsd do
 </vsd-standard>
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
       {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :stage=>"Committee Draft", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
+    expect(xmlpp(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s))).to be_equivalent_to output
   end
 
   it "abbreviates draft-standard" do
@@ -90,13 +90,13 @@ RSpec.describe IsoDoc::Vsd do
 </vsd-standard>
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
       {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :stage=>"Draft Standard", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
+    expect(xmlpp(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s))).to be_equivalent_to output
   end
 
   it "ignores unrecognised status" do
@@ -113,13 +113,13 @@ RSpec.describe IsoDoc::Vsd do
 </vsd-standard>
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
       {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :stage=>"Standard", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
+    expect(xmlpp(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s))).to be_equivalent_to output
   end
 
   it "processes pre" do
@@ -131,7 +131,7 @@ RSpec.describe IsoDoc::Vsd do
 </vsd-standard>
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
     #{HTML_HDR}
              <br/>
              <div>
@@ -143,12 +143,12 @@ RSpec.describe IsoDoc::Vsd do
          </body>
     OUTPUT
 
-    expect(
+    expect(xmlpp(
       IsoDoc::Vsd::HtmlConvert.new({}).
       convert("test", input, true).
       gsub(%r{^.*<body}m, "<body").
       gsub(%r{</body>.*}m, "</body>")
-    ).to be_equivalent_to output
+    )).to be_equivalent_to output
   end
 
   it "processes keyword" do
@@ -160,7 +160,7 @@ RSpec.describe IsoDoc::Vsd do
 </vsd-standard>
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
         #{HTML_HDR}
              <br/>
              <div>
@@ -172,12 +172,12 @@ RSpec.describe IsoDoc::Vsd do
          </body>
     OUTPUT
 
-    expect(
+    expect(xmlpp(
       IsoDoc::Vsd::HtmlConvert.new({}).
       convert("test", input, true).
       gsub(%r{^.*<body}m, "<body").
       gsub(%r{</body>.*}m, "</body>")
-    ).to be_equivalent_to output
+    )).to be_equivalent_to output
   end
 
   it "processes simple terms & definitions" do
@@ -193,7 +193,7 @@ RSpec.describe IsoDoc::Vsd do
         </vsd-standard>
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
         #{HTML_HDR}
              <p class="zzSTDTitle1"/>
              <div id="H"><h1>1.&#160; Terms and definitions</h1>
@@ -204,12 +204,12 @@ RSpec.describe IsoDoc::Vsd do
          </body>
     OUTPUT
 
-    expect(
+    expect(xmlpp(
       IsoDoc::Vsd::HtmlConvert.new({}).
       convert("test", input, true).
       gsub(%r{^.*<body}m, "<body").
       gsub(%r{</body>.*}m, "</body>")
-    ).to be_equivalent_to output
+    )).to be_equivalent_to output
   end
 
   it "processes section names" do
@@ -275,7 +275,7 @@ RSpec.describe IsoDoc::Vsd do
        </vsd-standard>
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
         #{HTML_HDR}
              <br/>
              <div>
@@ -345,11 +345,11 @@ RSpec.describe IsoDoc::Vsd do
          </body>
     OUTPUT
 
-    expect(
+    expect(xmlpp(
       IsoDoc::Vsd::HtmlConvert.new({}).convert("test", input, true).
       gsub(%r{^.*<body}m, "<body").
       gsub(%r{</body>.*}m, "</body>")
-    ).to be_equivalent_to output
+    )).to be_equivalent_to output
   end
 
   it "injects JS into blank html" do
@@ -361,13 +361,13 @@ RSpec.describe IsoDoc::Vsd do
       :novalid:
     INPUT
 
-    output = <<~"OUTPUT"
+    output = xmlpp(<<~"OUTPUT")
     #{BLANK_HDR}
 <sections/>
 </vsd-standard>
     OUTPUT
 
-    expect(Asciidoctor.convert(input, backend: :vsd, header_footer: true)).to be_equivalent_to output
+    expect(xmlpp(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r{jquery\.min\.js})
     expect(html).to match(%r{Overpass})
