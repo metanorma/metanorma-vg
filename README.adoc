@@ -1,12 +1,11 @@
 = Metanorma for VSD: Metanorma processor for Vitagreen Standard Documents (VSD)
 
 image:https://img.shields.io/gem/v/metanorma-vsd.svg["Gem Version", link="https://rubygems.org/gems/metanorma-vsd"]
-image:https://img.shields.io/travis/riboseinc/metanorma-vsd/master.svg["Build Status", link="https://travis-ci.org/riboseinc/metanorma-vsd"]
-image:https://codeclimate.com/github/riboseinc/metanorma-vsd/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/riboseinc/metanorma-vsd"]
-image:https://ci.appveyor.com/api/projects/status/525uihjhrm2e9s4f?svg=true["Appveyor Build Status", link="https://ci.appveyor.com/project/ribose/metanorma-vsd"]
-
-
-WARNING: This gem is still under development.
+image:https://travis-ci.com/metanorma/metanorma-vsd.svg["Build Status", link="https://travis-ci.com/metanorma/metanorma-vsd"]
+image:https://ci.appveyor.com/api/projects/status/8ugivqot7pi03naw?svg=true["Appveyor Build Status", link="https://ci.appveyor.com/project/metanorma/metanorma-vsd"]
+image:https://codeclimate.com/github/metanorma/metanorma-vsd/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-vsd"]
+image:https://img.shields.io/github/issues-pr-raw/metanorma/metanorma-vsd.svg["Pull Requests", link="https://github.com/metanorma/metanorma-vsd/pulls"]
+image:https://img.shields.io/github/commits-since/metanorma/metanorma-vsd/latest.svg["Commits since latest",link="https://github.com/metanorma/metanorma-vsd/releases"]
 
 == Functionality
 
