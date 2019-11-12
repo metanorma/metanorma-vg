@@ -45,17 +45,16 @@ module IsoDoc
         end
       end
 
-      def generate_header(filename, dir)
-        return unless @header
-        template = Liquid::Template.parse(File.read(@header, encoding: "UTF-8"))
-        meta = @meta.get
-        meta[:filename] = filename
-        params = meta.map { |k, v| [k.to_s, v] }.to_h
-        File.open("header.html", "w") { |f| f.write(template.render(params)) }
-        @files_to_delete << "header.html"
-        "header.html"
-      end
-
+      #def generate_header(filename, dir)
+        #return unless @header
+        #template = Liquid::Template.parse(File.read(@header, encoding: "UTF-8"))
+        #meta = @meta.get
+        #meta[:filename] = filename
+        #params = meta.map { |k, v| [k.to_s, v] }.to_h
+        #File.open("header.html", "w") { |f| f.write(template.render(params)) }
+        #@files_to_delete << "header.html"
+        #"header.html"
+      #end
     end
   end
 end
