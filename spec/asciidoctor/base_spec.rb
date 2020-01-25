@@ -74,13 +74,13 @@ RSpec.describe Asciidoctor::Vsd do
   <contributor>
     <role type="author"/>
     <organization>
-      <name>#{Metanorma::Vsd::ORGANIZATION_NAME}</name>
+      <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>#{Metanorma::Vsd::ORGANIZATION_NAME}</name>
+      <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <edition>2</edition>
@@ -98,7 +98,7 @@ RSpec.describe Asciidoctor::Vsd do
     <from>2001</from>
     <owner>
       <organization>
-        <name>#{Metanorma::Vsd::ORGANIZATION_NAME}</name>
+        <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
       </organization>
     </owner>
   </copyright>
