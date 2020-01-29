@@ -1,4 +1,4 @@
-require "metanorma"
+require 'metanorma'
 require 'metanorma/acme'
 
 Metanorma::Acme.configure do |config|
@@ -8,24 +8,27 @@ Metanorma::Acme.configure do |config|
   isodoc_vsd_html_folder = File.join(File.expand_path('isodoc', __dir__),
                                      'vsd',
                                      'html')
-  config.wordstylesheet = File.join(isodoc_vsd_html_folder, "wordstyle.scss")
-  config.standardstylesheet = File.join(isodoc_vsd_html_folder, "vsd.scss")
-  config.header = File.join(isodoc_vsd_html_folder, "header.html")
+  config.wordstylesheet = File.join(isodoc_vsd_html_folder, 'wordstyle.scss')
+  config.standardstylesheet = File.join(isodoc_vsd_html_folder, 'vsd.scss')
+  config.header = File.join(isodoc_vsd_html_folder, 'header.html')
   config.wordcoverpage = File.join(isodoc_vsd_html_folder,
-                                   "word_vsd_titlepage.html")
+                                   'word_vsd_titlepage.html')
   config.wordintropage = File.join(isodoc_vsd_html_folder,
-                                   "word_vsd_intro.html")
+                                   'word_vsd_intro.html')
   config.htmlstylesheet = File.join(isodoc_vsd_html_folder,
-                                    "htmlstyle.scss")
+                                    'htmlstyle.scss')
   config.htmlcoverpage = File.join(isodoc_vsd_html_folder,
-                                   "html_vsd_titlepage.html")
+                                   'html_vsd_titlepage.html')
   config.htmlintropage = File.join(isodoc_vsd_html_folder,
-                                   "html_vsd_intro.html")
-  config.scripts = File.join(isodoc_vsd_html_folder, "scripts.html")
+                                   'html_vsd_intro.html')
+  config.scripts = File.join(isodoc_vsd_html_folder, 'scripts.html')
+  config.logo_path = File.join(isodoc_vsd_html_folder, 'logo.png')
   config.xml_root_tag = 'vsd-standard'
+  vsd_rng_folder = File.join(File.expand_path('asciidoctor', __dir__), 'vsd')
+  config.validate_rng_file = File.join(vsd_rng_folder, 'vsd.rng')
 end
-require "metanorma/vsd"
-require "isodoc/acme"
+require 'metanorma/vsd'
+require 'isodoc/acme'
 
-require "asciidoctor" unless defined? Asciidoctor::Converter
-require "asciidoctor/vsd"
+require 'asciidoctor' unless defined? Asciidoctor::Converter
+require 'asciidoctor/vsd'

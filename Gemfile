@@ -8,7 +8,7 @@ gemspec
 # TODO: move to gemspec
 gem 'metanorma-acme',
   git: 'https://github.com/metanorma/metanorma-acme.git',
-  branch: 'feature/config-file-extract-attributes'
+  branch: 'feature/rng-file-configuration-option'
 
 if File.exist? 'Gemfile.devel'
   eval File.read('Gemfile.devel'), nil, 'Gemfile.devel' # rubocop:disable Security/Eval
