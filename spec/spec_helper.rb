@@ -69,13 +69,13 @@ BLANK_HDR = <<~"HDR"
          <contributor>
            <role type="author"/>
            <organization>
-             <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
+             <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
            </organization>
          </contributor>
          <contributor>
            <role type="publisher"/>
            <organization>
-             <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
+             <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
            </organization>
          </contributor>
         <language>en</language>
@@ -88,7 +88,7 @@ BLANK_HDR = <<~"HDR"
            <from>#{Time.new.year}</from>
            <owner>
              <organization>
-               <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
+               <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
              </organization>
            </owner>
          </copyright>

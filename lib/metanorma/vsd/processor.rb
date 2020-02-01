@@ -3,7 +3,6 @@ require "metanorma/processor"
 module Metanorma
   module Vsd
     class Processor < Metanorma::Processor
-
       def initialize
         @short = :vsd
         @input_format = :asciidoc
@@ -29,9 +28,9 @@ module Metanorma
       def output(isodoc_node, outname, format, options={})
         case format
         when :html
-          IsoDoc::Acme::HtmlConvert.new(options).convert(outname, isodoc_node)
+          IsoDoc::Vsd::HtmlConvert.new(options).convert(outname, isodoc_node)
         when :doc
-          IsoDoc::Acme::WordConvert.new(options).convert(outname, isodoc_node)
+          IsoDoc::Vsd::WordConvert.new(options).convert(outname, isodoc_node)
         when :pdf
           IsoDoc::Acme::PdfConvert.new(options).convert(outname, isodoc_node)
         else

@@ -8,6 +8,10 @@ module Asciidoctor
     #
     class Converter < Asciidoctor::Acme::Converter
       register_for "vsd"
+
+      def configuration
+        Metanorma::Vsd.configuration
+      end
     end
   end
 end

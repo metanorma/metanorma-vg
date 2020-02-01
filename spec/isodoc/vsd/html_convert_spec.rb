@@ -2,10 +2,10 @@ require "spec_helper"
 
 logoloc = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "..", "lib", "isodoc", "vsd", "html"))
 
-RSpec.describe IsoDoc::Acme do
+RSpec.describe IsoDoc::Vsd do
 
   it "processes default metadata" do
-    csdc = IsoDoc::Acme::HtmlConvert.new({})
+    csdc = IsoDoc::Vsd::HtmlConvert.new({})
     input = <<~"INPUT"
 <vsd-standard xmlns="https://open.ribose.com/standards/vsd">
 <bibdata type="standard">
@@ -14,13 +14,13 @@ RSpec.describe IsoDoc::Acme do
   <contributor>
     <role type="author"/>
     <organization>
-      <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
+      <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
+      <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <language>en</language>
@@ -30,7 +30,7 @@ RSpec.describe IsoDoc::Acme do
     <from>2001</from>
     <owner>
       <organization>
-        <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
+        <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
       </organization>
     </owner>
   </copyright>
@@ -73,7 +73,7 @@ RSpec.describe IsoDoc::Acme do
       {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"(cd)", :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Committee Draft", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
-    csdc = IsoDoc::Acme::HtmlConvert.new({})
+    csdc = IsoDoc::Vsd::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
     expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
   end
@@ -96,7 +96,7 @@ RSpec.describe IsoDoc::Acme do
       {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"(d)", :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Draft Standard", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
-    csdc = IsoDoc::Acme::HtmlConvert.new({})
+    csdc = IsoDoc::Vsd::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
     expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
   end
@@ -119,7 +119,7 @@ RSpec.describe IsoDoc::Acme do
       {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Standard", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
-    csdc = IsoDoc::Acme::HtmlConvert.new({})
+    csdc = IsoDoc::Vsd::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
     expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
   end
@@ -146,7 +146,7 @@ RSpec.describe IsoDoc::Acme do
     OUTPUT
 
     expect(xmlpp(
-      IsoDoc::Acme::HtmlConvert.new({}).
+      IsoDoc::Vsd::HtmlConvert.new({}).
       convert("test", input, true).
       gsub(%r{^.*<body}m, "<body").
       gsub(%r{</body>.*}m, "</body>")
@@ -173,7 +173,7 @@ RSpec.describe IsoDoc::Acme do
            </div>
          </body>
     OUTPUT
-    stripped_html = xmlpp(IsoDoc::Acme::HtmlConvert.new({})
+    stripped_html = xmlpp(IsoDoc::Vsd::HtmlConvert.new({})
                           .convert('test', input, true)
                           .gsub(%r{^.*<body}m, '<body')
                           .gsub(%r{</body>.*}m, '</body>'))
@@ -203,7 +203,7 @@ RSpec.describe IsoDoc::Acme do
            </div>
          </body>
     OUTPUT
-    stripped_html = xmlpp(IsoDoc::Acme::HtmlConvert.new({})
+    stripped_html = xmlpp(IsoDoc::Vsd::HtmlConvert.new({})
                           .convert('test', input, true)
                           .gsub(%r{^.*<body}m, '<body')
                           .gsub(%r{</body>.*}m, '</body>'))
@@ -342,7 +342,7 @@ RSpec.describe IsoDoc::Acme do
            </div>
          </body>
     OUTPUT
-    stripped_html = xmlpp(IsoDoc::Acme::HtmlConvert
+    stripped_html = xmlpp(IsoDoc::Vsd::HtmlConvert
                           .new({})
                           .convert('test', input, true)
                           .gsub(%r{^.*<body}m, '<body')

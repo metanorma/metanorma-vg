@@ -69,18 +69,18 @@ RSpec.describe Asciidoctor::Vsd do
 <vsd-standard xmlns="https://open.ribose.com/standards/vsd">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
-  <docidentifier>#{Metanorma::Acme.configuration.organization_name_long} 1000</docidentifier>
+  <docidentifier>#{Metanorma::Vsd.configuration.organization_name_long} 1000</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
     <organization>
-      <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
+      <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
+      <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <edition>2</edition>
@@ -98,7 +98,7 @@ RSpec.describe Asciidoctor::Vsd do
     <from>2001</from>
     <owner>
       <organization>
-        <name>#{Metanorma::Acme.configuration.organization_name_long}</name>
+        <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
       </organization>
     </owner>
   </copyright>
