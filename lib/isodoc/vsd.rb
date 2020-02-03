@@ -1,9 +1,9 @@
-require_relative "vsd/html_convert"
-require_relative "vsd/word_convert"
-require_relative "vsd/pdf_convert"
+require "isodoc/vsd/metadata"
+require "isodoc/vsd/html_convert"
+require "isodoc/vsd/word_convert"
+require "isodoc/vsd/pdf_convert"
 
 module IsoDoc
   module Vsd
-    DOCUMENT_NAMESPACE = "https://open.ribose.com/standards/vsd"
   end
 end

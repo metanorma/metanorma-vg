@@ -69,18 +69,18 @@ RSpec.describe Asciidoctor::Vsd do
 <vsd-standard xmlns="https://open.ribose.com/standards/vsd">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
-  <docidentifier>1000</docidentifier>
+  <docidentifier>#{Metanorma::Vsd.configuration.organization_name_long} 1000</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
     <organization>
-      <name>#{Metanorma::Vsd::ORGANIZATION_NAME}</name>
+      <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>#{Metanorma::Vsd::ORGANIZATION_NAME}</name>
+      <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <edition>2</edition>
@@ -98,12 +98,16 @@ RSpec.describe Asciidoctor::Vsd do
     <from>2001</from>
     <owner>
       <organization>
-        <name>#{Metanorma::Vsd::ORGANIZATION_NAME}</name>
+        <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
       </organization>
     </owner>
   </copyright>
 <ext>
   <doctype>standard</doctype>
+  <editorialgroup>
+    <committee type='A'>TC</committee>
+  </editorialgroup>
+  <security>Client Confidential</security>
 </ext>
 </bibdata>
 <sections/>
@@ -156,7 +160,7 @@ RSpec.describe Asciidoctor::Vsd do
          <title>Foreword</title>
          <p id="_">This is a preamble</p>
        </foreword></preface><sections>
-       <clause id="_" inline-header="false" obligation="normative">
+       <clause id='_' obligation='normative'>
          <title>Section 1</title>
        </clause></sections>
        </vsd-standard>

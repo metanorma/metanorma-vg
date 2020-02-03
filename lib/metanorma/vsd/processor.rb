@@ -3,7 +3,6 @@ require "metanorma/processor"
 module Metanorma
   module Vsd
     class Processor < Metanorma::Processor
-
       def initialize
         @short = :vsd
         @input_format = :asciidoc
@@ -33,15 +32,7 @@ module Metanorma
         when :doc
           IsoDoc::Vsd::WordConvert.new(options).convert(outname, isodoc_node)
         when :pdf
-          IsoDoc::Vsd::PdfConvert.new(options).convert(outname, isodoc_node)
-=begin
-          require 'tempfile'
-          outname_html = outname + ".html"
-          IsoDoc::Vsd::HtmlConvert.new(options).convert(outname_html, isodoc_node)
-          puts outname_html
-          system "cat #{outname_html}"
-          Metanorma::Output::Pdf.new.convert(outname_html, outname)
-=end
+          IsoDoc::Acme::PdfConvert.new(options).convert(outname, isodoc_node)
         else
           super
         end
