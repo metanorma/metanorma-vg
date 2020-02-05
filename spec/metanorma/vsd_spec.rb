@@ -33,24 +33,16 @@ RSpec.describe Metanorma::Vsd do
       let(:organization_name_short) { 'Test' }
       let(:organization_name_long) { 'Test Corp.' }
       let(:document_namespace) { 'https://example.com/' }
-      let(:html_extract_attributes) do
-        {
-          'one' => 'sting',
-          'two' => 'number'
-        }
-      end
 
       it 'sets atrributes' do
         Metanorma::Vsd.configure do |config|
           config.organization_name_short = organization_name_short
           config.organization_name_long = organization_name_long
           config.document_namespace = document_namespace
-          config.html_extract_attributes = html_extract_attributes
         end
         expect(config.organization_name_short).to eq(organization_name_short)
         expect(config.organization_name_long).to eq(organization_name_long)
         expect(config.document_namespace).to eq(document_namespace)
-        expect(config.html_extract_attributes).to eq(html_extract_attributes)
       end
     end
   end
