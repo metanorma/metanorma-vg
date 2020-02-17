@@ -15,7 +15,7 @@ RSpec.describe Metanorma::Vsd do
       let(:default_organization_name_short) { 'Vita Green' }
       let(:default_organization_name_long) { 'Vita Green' }
       let(:default_document_namespace) do
-        'https://open.ribose.com/standards/vsd'
+        'https://www.metanorma.org/ns/vsd'
       end
 
       it 'sets default atrributes' do

@@ -40,7 +40,7 @@ RSpec.describe Metanorma::Vsd::Processor do
   it "generates HTML from IsoDoc XML" do
     system "rm -f test.xml"
     input = <<~"INPUT"
-    <vsd-standard xmlns="http://riboseinc.com/isoxml">
+    <vsd-standard xmlns="https://metanorma.org/ns/vsd">
       <sections>
         <terms id="H" obligation="normative"><title>Terms, Definitions, Symbols and Abbreviated Terms</title>
           <term id="J">

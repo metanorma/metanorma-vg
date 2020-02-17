@@ -48,7 +48,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-        {:accesseddate=>"XXX", :agency=>"Vita Green", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000(wd)", :doctitle=>"Main Title", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Working Draft", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
+        {:accesseddate=>"XXX", :agency=>"Vita Green", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000", :docnumeric=>nil, :doctitle=>"Main Title", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :stage=>"Working Draft", :stageabbr=>"WD", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
     docxml, filename, dir = csdc.convert_init(input, "test", true)
@@ -70,7 +70,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"(cd)", :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Committee Draft", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
+      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :stage=>"Committee Draft", :stageabbr=>"CD", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
@@ -93,7 +93,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"(d)", :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Draft Standard", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
+      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :stage=>"Draft Standard", :stageabbr=>"DS", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
@@ -116,7 +116,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Standard", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
+      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :receiveddate=>"XXX", :revdate=>"2000-01-01", :stage=>"Standard", :stageabbr=>"S", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})

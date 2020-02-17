@@ -66,7 +66,7 @@ RSpec.describe Asciidoctor::Vsd do
 
     output = xmlpp(<<~"OUTPUT")
     <?xml version="1.0" encoding="UTF-8"?>
-<vsd-standard xmlns="https://open.ribose.com/standards/vsd">
+<vsd-standard xmlns="https://www.metanorma.org/ns/vsd">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
   <docidentifier>#{Metanorma::Vsd.configuration.organization_name_long} 1000</docidentifier>
@@ -107,7 +107,6 @@ RSpec.describe Asciidoctor::Vsd do
   <editorialgroup>
     <committee type='A'>TC</committee>
   </editorialgroup>
-  <security>Client Confidential</security>
 </ext>
 </bibdata>
 <sections/>

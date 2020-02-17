@@ -1,0 +1,19 @@
+organization_name_short: Vita Green
+organization_name_long: Vita Green
+document_namespace: https://www.metanorma.org/ns/vsd
+xml_root_tag: 'vsd-standard'
+logo_path: lib/isodoc/vsd/html/logo.png
+validate_rng_file: lib/asciidoctor/vsd/vsd.rng
+htmlcoverpage: lib/isodoc/vsd/html/html_vsd_titlepage.html
+htmlintropage: lib/isodoc/vsd/html/html_vsd_intro.html
+htmlstylesheet: lib/isodoc/vsd/html/htmlstyle.scss
+scripts: lib/isodoc/vsd/html/scripts.html
+scripts_pdf: lib/isodoc/vsd/html/scripts.pdf.html
+standardstylesheet: lib/isodoc/vsd/html/vsd.scss
+header: lib/isodoc/vsd/html/header.html
+wordcoverpage: lib/isodoc/vsd/html/word_vsd_titlepage.html
+wordintropage: lib/isodoc/vsd/html/word_vsd_intro.html
+wordstylesheet: lib/isodoc/vsd/html/wordstyle.scss
+published_stages:
+  - published
+
