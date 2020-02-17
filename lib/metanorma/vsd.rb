@@ -33,7 +33,7 @@ module Metanorma
         self.scripts ||= File.join(isodoc_vsd_html_folder, 'scripts.html')
         self.logo_path ||= File.join(isodoc_vsd_html_folder, 'logo.png')
         self.xml_root_tag ||= 'vsd-standard'
-        vsd_rng_folder ||= File.join(File.expand_path('asciidoctor', __dir__), 'vsd')
+        vsd_rng_folder ||= File.join(File.expand_path('../asciidoctor', __dir__), 'vsd')
         self.validate_rng_file ||= File.join(vsd_rng_folder, 'vsd.rng')
         super
       end
