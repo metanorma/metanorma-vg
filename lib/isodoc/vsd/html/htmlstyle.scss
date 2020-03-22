@@ -1,258 +1,95 @@
 /*
-    0 CSS RESET
+  0 CSS RESET
 */
 
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
+  v2.0 | 20110126
+  License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-}
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-        border: 0;
-        font-size: 100%;
-}
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, tt, var,
-b, u, i, center,
-dl, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-        vertical-align: baseline;
-}
-
-
-html, body, div, span, applet, object, iframe,
-p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  font-family: $bodyfont;
-}
-
-h1, h2, h3, h4, h5, h6, .h2Annex {
-  font-family: $headerfont;
-}
-
-dl {
-  display: grid;
-  grid-template-columns: max-content auto;
-}
-
-dt {
-  grid-column-start: 1;
-}
-
-dd {
-  grid-column-start: 2;
-}
-
-dd p, dt p {
-  margin-top: 0px;
-}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
+@import 'base_style/all';
 
 /*
     1. HTML & Body
 */
 
-  body {
-    margin: 0;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    color: #1d1d1d;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 1.4em;
-    background-color: #ffffff;
-  }
+body {
+  @include bodyStyle1(15px, 1.4em, #1d1d1d, #ffffff, 300);
+  font-weight: 400;
 
-  main {margin: 0 3em 0 6em;}
-
-  #toc{
-    font-family: $bodyfont;
-    font-weight: 400;
+  pre * {
+    font-family: $bodyfont !important;
   }
+}
+
+main {
+  margin: 0 3em 0 6em;
+}
 
 /*
     2. Responsive navigation layout
 */
 
+#toc {
+  @include toc(#485094, #6C734A, #485094);
+  @include sidebarToc();
 
-@media (min-width: 768px) {
-    nav {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: 323px;
-        font-size: 0.9em;
-        overflow: auto;
-        padding: 0 0 0 45px;
-        margin-right: 30px;
-        background-color:#f7f7f7;
+  .toc-active a {
+    color: white;
+  }
+
+  .toc-active,
+  li:hover {
+    box-shadow: none !important;
+
+    a {
+      color: white;
+      background: none;
+      box-shadow: none;
     }
+  }
 
-    #toggle {
-        position: fixed;
-        height: 100%;
-        width: 30px;
-        background-color:#6C734A;
-        color: white!important;
-        cursor: pointer;
-        z-index: 100;
+  li a {
+    text-transform: uppercase;
+  }
+
+  ul {
+    a:hover {
+      box-shadow: none;
+      color: white;
     }
-
-    #toggle span {
-        text-align: center;
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
-
-    }
-
-    .container {
-        padding-left: 360px;
-    }
-
-    .rule.toc {
-        display: none;
-    }
-
-    h1.toc-contents {
-        margin-top: 1em;
-    }
-
-    ul#toc-list {
-        padding:0;
-        margin:0;
-    }
+  }
 }
 
-@media (max-width: 768px) {
-    #toc {
-        padding: 0 1.5em 0 1.5em;
-        overflow: visible;
-    }
+nav {
+  @include sidebarNav(#f7f7f7, 323px, 45px);
 }
 
+#toggle {
+  @include sidebarNavToggle(white, #6C734A)
+}
 
+@media screen and (min-width: 768px) {
+  .container {
+    padding-left: 360px;
+  }
 
-#toc ul {
-    margin: 0;
+  .rule.toc {
+    display: none;
+  }
+
+  h1.toc-contents {
+    margin-top: 1em;
+  }
+
+  ul#toc-list {
     padding: 0;
-    list-style: none;
+    margin: 0;
+  }
 }
 
-#toc li a {
-    padding: 5px 10px;
-}
-
-#toc a {
-    color: #485094;
-    text-decoration: none;
-    display: block;
-}
-
-#toc a:hover {
-    box-shadow: none;
-    color: white;
-}
-
-#toc .h2 {
-    padding-left: 30px;
-}
-
-#toc .h3 {
-    padding-left: 50px;
-}
-
-#toc .toc-active a {
-    color: white;
-}
-
-#toc .toc-active, #toc li:hover {
-    background: #6C734A;
-    box-shadow: inset -5px 0px 10px -5px #6C734A!important;
-
-}
-
-#toc li:hover a {
-    color: white;
-    background: none;
-     box-shadow: none;
-}
-
-#toc li a {
-  text-transform: uppercase;
+div.figure {
+  @include figureBlock();
 }
 
 /*
@@ -260,69 +97,32 @@ table {
 */
 
 .document-type-band {
-    left:0;
-    top:180px;
-    height: 100%;
-    position: fixed;
-    display: block;
-    z-index: 99;
-    /*box-shadow: -5px 0px 10px #1d1d1d*/
-
+  @include docBand(2, 150, 180px);
 }
 
 .document-stage-band {
-    left:0;
-    top:0;
-    height: 100%;
-    position: fixed;
-    display: block;
-    z-index: 98;
-    box-shadow: -5px 0px 10px #1d1d1d
+  @include docBand(1, 150);
 }
 
-.document-type {
-    position: relative;
-    width: 25px;
+.document-stage-band> :first-child {
+  font-weight: 300;
 }
 
-.document-stage {
-    position: relative;
-    width: 25px;
-}
-
-p.document-type, p.document-stage {
-    color: white;
-    text-transform: uppercase;
-    font-size: 0.9em;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    margin:0;
-    margin-left: 6px;
-    writing-mode:tb-rl;
-	-webkit-transform:rotate(180deg);
-	-moz-transform:rotate(180deg);
-	-o-transform: rotate(180deg);
-	white-space:nowrap;
-	display:block;
-    bottom:0;
-}
-
-p.document-type {
-    font-weight: 400;
-    height: 150;
+p.document-type,
+p.document-stage {
+  @include docBandTitle(150);
 }
 
 #governance-band p.document-type {
-    font-weight: 400;
-    height: 230px!important;
+  height: 230px !important;
 }
 
 p.document-stage {
-    font-weight: 300;
-    height:160px;
+  font-weight: 300;
+  height: 160px;
 }
 
-#standard-band p{
+#standard-band p {
   height: 270px;
 }
 
@@ -330,77 +130,78 @@ p.document-stage {
   height: 150px;
 }
 
-
-#standard-band,  #published-band {
-    background-color: #007864;
+#standard-band,
+#published-band {
+  background-color: #007864;
 }
 
-#standard, #published {
-    border-bottom: solid 3px #007864;
+#standard,
+#published {
+  border-bottom: solid 3px #007864;
 }
 
-#governance, #policy-and-procedures {
-    border-bottom: solid 3px #750697;
+#governance,
+#policy-and-procedures {
+  border-bottom: solid 3px #750697;
 }
 
-#governance-band, #policy-and-procedures-band {
-    background-color: #750697;
+#governance-band,
+#policy-and-procedures-band {
+  background-color: #750697;
 }
 
 #guide {
-    border-bottom: solid 3px #48a0e7;
+  border-bottom: solid 3px #48a0e7;
 }
 
 #guide-band {
-    background-color: #48a0e7;
+  background-color: #48a0e7;
 }
 
 .coverpage-maturity {
-    font-family: $bodyfont;
-    font-weight: 400;
-    font-size: 1em;
-    margin: 0 0 2em 0;
-    text-transform: uppercase;
-    }
-
-#working-draft, #proposal {
-    border-bottom: solid 3px #F7803C;
+  @include coverpageStageBlock();
 }
 
-#working-draft-band, #proposal-band {
-    background-color: #F7803C;
+#working-draft,
+#proposal {
+  border-bottom: solid 3px #F7803C;
+}
+
+#working-draft-band,
+#proposal-band {
+  background-color: #F7803C;
 }
 
 #committee-draft {
-    border-bottom: solid 3px #fd06fd;
+  border-bottom: solid 3px #fd06fd;
 }
 
 #committee-draft-band {
-    background-color: #fd06fd;
+  background-color: #fd06fd;
 }
 
 #draft-standard {
-    border-bottom: solid 3px #fdf906;
+  border-bottom: solid 3px #fdf906;
 }
 
 #draft-standard-band {
-    background-color: #fdf906;
+  background-color: #fdf906;
 }
 
 #standard {
-    border-bottom: solid 3px #007864;
+  border-bottom: solid 3px #007864;
 }
 
 #standard-band {
-    background-color: #007864;
+  background-color: #007864;
 }
 
 #obsolete {
-    border-bottom: solid 3px #7e0d13;
+  border-bottom: solid 3px #7e0d13;
 }
 
 #obsolete-band {
-    background-color: #7e0d13;
+  background-color: #7e0d13;
 }
 
 /*
@@ -467,74 +268,43 @@ p.document-stage {
 /*
     3.2 Links
 */
-
-    a, a:visited{
-        text-decoration: none;
-        color: #485094;
-    }
-
-    a:hover {
-        color: white;
-        background: #6C734A;
-        box-shadow: 3px 0 0 #6C734A, -3px 0 0 #6C734A;
-        /* padding: 2px 0 2px 0; */
-    }
-
-    ::selection {
-        background: #6C734A; /* WebKit/Blink Browsers */
-        color: white;
-      }
-      ::-moz-selection {
-        background: #6C734A; /* Gecko Browsers */
-        color: white;
-      }
-
-      .contact-info a:hover {
-          color: #485094;
-          text-decoration: underline;
-          background: none;
-          box-shadow: 0 0 0 0;
-      }
-
-
+@include elementStyles(#485094, #6C734A, white);
 
 /*
     3.3 Lists
 */
 
-    ul, ol {margin-left: 1.2em;}
+ul, ol {
+  margin-left: 1.2em;
+}
 
-  ul  li {
+ul  li {
   list-style: none;
-   }
+}
 
-   ul li:before {
-    content: "—";
-    display: inline-block; width: 1em;
-    margin-left: -1.2em;
-  }
+ul li:before {
+  content: "—";
+  display: inline-block; width: 1em;
+  margin-left: -1.2em;
+}
 
-  ul li p {
-    display: inline;
-  }
+ul li p {
+  display: inline;
+}
 
 ul li:first-child {
   margin-top: 1em;
 }
 
-div.figure > img {
-margin-left: auto;
-margin-right: auto;
-display: block;
-max-width: 100%;
-height: auto;
+#toc-list ul {
+  margin-bottom: 0.25em;
 }
 
-    #toc-list ul {margin-bottom: 0.25em;}
+#toc-list li {
+  list-style-type: none;
+}
 
-    #toc-list li {list-style-type: none;}
-
-    #toc li:before {
+#toc li:before {
   content: " ";
   display: none;
 }
@@ -543,13 +313,9 @@ height: auto;
 /*
     3.4 Rules
 */
-
-    .rule {
-        width: 100%;
-        height: 1px;
-        background-color: #0e1a85;
-        margin: 2em 0;
-      }
+.rule {
+  @include rule(1px, #0e1a85)
+}
 
 /*
     3.5 Bibliograhy
@@ -564,24 +330,22 @@ p.Biblio, p.NormRef {
     3.6 Source Code + figures
 */
 
-.figure, pre {
-    font-family: $monospacefont;
-    font-variant-ligatures: none;
-  }
-
-.figure, pre, .pseudocode {
-    background-color: #f7f7f7;
-    font-size: 0.8em;
-    line-height: 1.6em;
-    padding: 1.5em;
-    margin: 2em 0 1em 0;
-    overflow: auto;
+.figure,
+pre,
+.pseudocode {
+  @include pseudocodeBlock(#f7f7f7);
 }
 
-.FigureTitle, .SourceTitle, .AdmonitionTitle, .RecommendationTitle {
-    font-weight: 700;
-    font-size: 1em;
-    text-align: center;
+pre {
+  @include monospaceBlockStyle()
+}
+
+@include admonitionBlock();
+@include recommendationBlock();
+
+.FigureTitle,
+.SourceTitle {
+  @include blockTitle()
 }
 
 /*
@@ -589,14 +353,14 @@ p.Biblio, p.NormRef {
 */
 
 .Note {
-    background-color: #fff495;
-    color: #47430c;
-    padding: 1.2em;
-    margin: 1em 0 1em 0;
+  background-color: #fff495;
+  color: #47430c;
+  padding: 1.2em;
+  margin: 1em 0 1em 0;
 
-    p {
-        margin: 0;
-    }
+  p {
+      margin: 0;
+  }
 }
 
 /*
@@ -604,20 +368,16 @@ p.Biblio, p.NormRef {
 */
 
 .example {
-    background-color: #e1eef1;
-    padding: 1.2em;
-    margin: 2em 0 1em 0;
-}
+  @include exampleBlock(#e1eef1, #424242, 1.2em);
 
-.example .example-title {
-    font-weight: 700;
-    text-transform: uppercase;
-    text-align: center;
-    margin-top:0;
-}
+  .example-title {
+    margin-top: 0;
+  }
 
-.example pre, .example .pseudocode {
-      background: none;
+  pre,
+  .pseudocode {
+    background: none;
+  }
 }
 
 /*
@@ -625,26 +385,7 @@ p.Biblio, p.NormRef {
 */
 
 table {
-  border-collapse: collapse;
-  width: 100%;
-  font-weight: 300;
-  margin: 1em 0 2em 0;
-  margin-left: auto;
-  margin-right: auto;
-  padding-right: 2em;
-}
-
-table, th, td {
-  border: 1px solid black;
-  font-size: 0.95em;
-}
-
-td, th {
-  padding: 1em;
-}
-
-td.header {
-  font-weight: 400;
+  @include table(1px solid black);
 }
 
 p.TableTitle {
@@ -658,8 +399,8 @@ p.TableTitle {
 */
 
 a.footnote-number {
-    vertical-align: super;
-    font-size: 0.8em;
+  vertical-align: super;
+  font-size: 0.8em;
 }
 
 .footnote {
@@ -672,25 +413,15 @@ a.footnote-number {
 */
 
 .Quote {
-    background-color: #f7f7f7;
-    font-style: italic;
-    width: 80%;
-    padding: 1.5em;
-    margin-top: 2em;
-    margin-left: auto;
-    margin-right: auto;
+  @include blockquoteBlock(#f2f2f2);
 }
-
 
 /*
     3.12 Formulas
 */
 
 .formula {
-    background-color: #f7f7f7;
-    padding: 1.5em;
-    margin-top: 2em;
-    text-align: center;
+  @include formulaBlock(#f7f7f7)
 }
 
 /*
@@ -698,10 +429,9 @@ a.footnote-number {
 */
 
 .contact-info {
-    padding: 2em;
-    margin-top: 5em;
-    width: 250px;
-
+  padding: 2em;
+  margin-top: 5em;
+  width: 250px;
   text-align: left;
   border: #6C734A solid 2px;
   color: #6C734A!important;
@@ -715,20 +445,20 @@ a.footnote-number {
 }
 
 .contact-info p, .contact-info a {
-    font-family: $monospacefont;
-    font-weight: 400;
+  font-family: $monospacefont;
+  font-weight: 400;
 }
 
 .contact-info .name {
-    font-weight: 700;
-    font-size: 1.2em;
-    margin-bottom:0;
+  font-weight: 700;
+  font-size: 1.2em;
+  margin-bottom:0;
 }
 
 .contact-info .address {
-    font-size: 1em;
-    line-height: 1.3em;
-    margin-top:0;
+  font-size: 1em;
+  line-height: 1.3em;
+  margin-top:0;
 }
 
 /*
@@ -744,8 +474,8 @@ span.keyword {
 */
 
 p {
-    margin-top: 1em;
-    margin-bottom: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 h2 p {
@@ -781,107 +511,108 @@ h2 p {
   position: absolute;
 }
 
-  .doc-number {
-      font-size: 0.5em;
-      font-family: $bodyfont;
-  }
+.doc-number {
+  font-size: 0.5em;
+  font-family: $bodyfont;
+}
 
-  .coverpage-title {
-      padding-bottom: 0.5em;
-      font-family: $headerfont;
-      font-size: 1.2em;
-      line-height: 1.5em;
+.coverpage-title {
+  padding-bottom: 0.5em;
+  font-family: $headerfont;
+  font-size: 1.2em;
+  line-height: 1.5em;
   font-weight: 100;
   padding-left: 1em;
   padding-right: 1em;
   text-transform: uppercase;
-  }
+}
 
-  .WordSection11 {
-    padding: 0 2em 0 3em;
-  }
+.WordSection11 {
+  padding: 0 2em 0 3em;
+}
 
  .info-section {
-    padding: 0 2em 0 5em; }
+  padding: 0 2em 0 5em;
+}
 
-  .prefatory-section {
-    padding: 0 3em 0 6em;
-  }
-
-
-  .zzSTDTitle1, .MsoCommentText {
-    display: none;
-  }
+.prefatory-section {
+  padding: 0 3em 0 6em;
+}
 
 
-  .coverpage {
-    text-align: center;
-    padding-left: 1.5em;
-  }
+.zzSTDTitle1, .MsoCommentText {
+  display: none;
+}
 
-  .coverpage-logo span, .coverpage-tc-name span {
-    font-family: $bodyfont;
-      text-transform: none;
-      font-weight: 300;
-  }
 
-  .coverpage-tc-name {
-    font-size: 1.2em;
-    line-height: 1.2em;
-    margin: 0.25em 0;
-  }
+.coverpage {
+  text-align: center;
+  padding-left: 1.5em;
+}
+
+.coverpage-logo span, .coverpage-tc-name span {
+  font-family: $bodyfont;
+    text-transform: none;
+    font-weight: 300;
+}
+
+.coverpage-tc-name {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin: 0.25em 0;
+}
 
 /*
     4.2 Document Identity
 */
 
-  .coverpage-doc-identity {
-    font-size: 2em;
-    line-height: 2em;
-  }
+.coverpage-doc-identity {
+  font-size: 2em;
+  line-height: 2em;
+}
 
-  .coverpage-title .title-second {
-    display: none;
-  }
+.coverpage-title .title-second {
+  display: none;
+}
 
-  .coverpage-stage-block {
-    font-family: $bodyfont;
-    font-weight: 600;
-    font-size: 1.25em;
-    margin: 2em 0em 2em 0em;
-    text-transform: uppercase;
-  }
+.coverpage-stage-block {
+  font-family: $bodyfont;
+  font-weight: 600;
+  font-size: 1.25em;
+  margin: 2em 0em 2em 0em;
+  text-transform: uppercase;
+}
 
 /*
     4.3 Draft Warning
 */
 
-  .coverpage-warning {
-    border: #f36f36 solid 2px;
+.coverpage-warning {
+  border: #f36f36 solid 2px;
   color: #f36f36!important;
   margin: 1em 2em;
   color: #485094;
   padding: 2em 1em 1em 1em;
   border-radius: 25px;
-  }
+}
 
-  .coverpage-warning .title {
-    font-family: $headerfont;
-    font-weight: 300;
-    text-transform: uppercase;
-    font-size: 1.2em;
-  }
+.coverpage-warning .title {
+  font-family: $headerfont;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.2em;
+}
 
 
 /*
     4.4 Copyright
 */
 
-  .copyright {
-    padding: 1em;
-    font-size: 0.9em;
-    text-align: left;
-  }
+.copyright {
+  padding: 1em;
+  font-size: 0.9em;
+  text-align: left;
+}
 
 
 /*  .copyright .name, .copyright .address {color: #485094;} */
@@ -899,32 +630,12 @@ To top button
 */
 
 #myBtn {
-    font-family: $monospacefont;
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    font-size: 12px;
-    border: none;
-    outline: none;
-    background-color: #1f8ca0;
-    opacity: 0.15;
-    color: white;
-    cursor: pointer;
-    padding: 10px 15px 10px 15px;
-    border-radius: 4px;
-    text-transform: uppercase;
-  }
+  @include toTopBtn(white, #1f8ca0);
+  text-transform: uppercase;
 
-  #myBtn:hover {
-    opacity: 1;
+  a.anchorjs-link {
+    @include anchorLink($un-link)
   }
-
-  a.anchorjs-link:hover {
-  background: none;
-  color: #485094;
-  box-shadow: none;
 }
 
 @page {
@@ -932,14 +643,8 @@ To top button
 }
 
 @media print {
-
-
   .document-info,  nav, .copyright {
       page-break-before: always;
-  }
-
-  nav {
-    page-break-after: always;
   }
 
   h1, h2, h3, h4 {
@@ -975,71 +680,39 @@ To top button
       display: none;
   }
 
-  button#myBtn {
-    background-color: white;
-  }
-
   .container {
       padding-left: 0;
   }
 
-  nav {
-      position: relative;
-      width: auto;
-      font-size: 0.9em;
-      overflow: auto;
-      padding: 0;
-      margin-right: 0;
-      background-color: white;
+  h1.content {
+    margin-top: 2em;
+    line-height: 2.5em;
   }
 
-    #toc .toc-active a {
-    color: #4D7EA5;
+  h1 {
+    font-size: 1.5em;
+    line-height: 1.5;
   }
 
-  #toc .toc-active, #toc li:hover {
-    background: white;
-    box-shadow: none !important; }
+  h2 {
+    font-size: 1.2em
+  }
 
-    #toc li:hover a {
-    color: black; }
+  h3 {
+    font-size: 1em;
+  }
 
+  .Note {
+      background-color: #fff495;
+      color: #47430c;
+      padding: 5px;
+      margin: 2em 0 1em 0; }
 
-    h1.content {
-      margin-top: 2em;
-      line-height: 2.5em;
-    }
+  .Note p {
+    padding: 0 5px 0 5px;
+  }
 
-    h1 {
-      font-size: 1.5em;
-      line-height: 1.5;
-    }
-
-    h2 {
-      font-size: 1.2em
-    }
-
-    h3 {
-      font-size: 1em;
-    }
-
-    .Note {
-        background-color: #fff495;
-        color: #47430c;
-        padding: 5px;
-        margin: 2em 0 1em 0; }
-
-    .Note p {
-      padding: 0 5px 0 5px;
-    }
-
-    nav {
-      line-height: 1;
-    }
-
-    .wrapper-top-bottom {
-      display: none;
-    }
-
+  .wrapper-top-bottom {
+    display: none;
+  }
 }
-
