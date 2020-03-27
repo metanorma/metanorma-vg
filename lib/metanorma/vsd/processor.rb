@@ -32,7 +32,7 @@ module Metanorma
         when :doc
           IsoDoc::Vsd::WordConvert.new(options).convert(outname, isodoc_node)
         when :pdf
-          IsoDoc::Acme::PdfConvert.new(options).convert(outname, isodoc_node)
+          IsoDoc::Generic::PdfConvert.new(options).convert(outname, isodoc_node)
         else
           super
         end

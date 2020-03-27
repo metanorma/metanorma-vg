@@ -1,10 +1,10 @@
 require "metanorma"
-require "metanorma-acme"
+require "metanorma-generic"
 require "metanorma/vsd/processor"
 
 module Metanorma
   module Vsd
-    class Configuration < Metanorma::Acme::Configuration
+    class Configuration < Metanorma::Generic::Configuration
       def initialize(*args)
         super
         html_configs ||= File.join(File.expand_path('config', __dir__), 'vsd_html.yml')
