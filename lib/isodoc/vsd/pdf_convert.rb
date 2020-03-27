@@ -5,7 +5,7 @@ module IsoDoc
   module Vsd
     # A {Converter} implementation that generates PDF HTML output, and a
     # document schema encapsulation of the document for validation
-    class PdfConvert < IsoDoc::Acme::PdfConvert
+    class PdfConvert < IsoDoc::Generic::PdfConvert
       def configuration
         Metanorma::Vsd.configuration
       end
