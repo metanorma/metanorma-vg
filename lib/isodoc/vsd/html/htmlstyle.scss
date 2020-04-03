@@ -97,7 +97,11 @@ div.figure {
 */
 
 .document-type-band {
-  @include docBand(2, 150, 180px);
+  @include docBand($order: 2, $offset: 180px);
+
+  .document-type {
+    top: 20px;
+  }
 }
 
 .document-stage-band {
@@ -108,7 +112,6 @@ div.figure {
   font-weight: 300;
 }
 
-p.document-type,
 p.document-stage {
   @include docBandTitle(150);
 }
