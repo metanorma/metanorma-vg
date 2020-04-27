@@ -7,6 +7,8 @@ module Asciidoctor
     # schema encapsulation of the document for validation
     #
     class Converter < Asciidoctor::Generic::Converter
+      XML_ROOT_TAG = Metanorma::Vsd.configuration.xml_root_tag
+
       register_for "vsd"
 
       def configuration

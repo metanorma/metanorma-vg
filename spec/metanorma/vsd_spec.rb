@@ -45,5 +45,9 @@ RSpec.describe Metanorma::Vsd do
         expect(config.document_namespace).to eq(document_namespace)
       end
     end
+
+    it 'Asciidoctor::Vsd::Converter::XML_ROOT_TAG has the correct value' do
+      expect(Asciidoctor::Vsd::Converter::XML_ROOT_TAG).to eq('vsd-standard')
+    end
   end
 end
