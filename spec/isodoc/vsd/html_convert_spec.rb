@@ -48,7 +48,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-        {:accesseddate=>"XXX", :agency=>"Vita Green", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000", :docnumeric=>nil, :doctitle=>"Main Title", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"Vita Green", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Working Draft", :stageabbr=>"WD", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
+        {:accesseddate=>"XXX", :agency=>"Vita Green", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000", :docnumeric=>nil, :doctitle=>"Main Title", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"Vita Green", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Working Draft", :stageabbr=>"WD", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
     OUTPUT
 
     docxml, filename, dir = csdc.convert_init(input, "test", true)
@@ -70,7 +70,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Committee Draft", :stageabbr=>"CD", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
+      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Committee Draft", :stageabbr=>"CD", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
@@ -93,7 +93,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Draft Standard", :stageabbr=>"DS", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
+      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Draft Standard", :stageabbr=>"DS", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
@@ -116,7 +116,7 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Standard", :stageabbr=>"S", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX"}
+      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Standard", :stageabbr=>"S", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
@@ -196,7 +196,7 @@ RSpec.describe IsoDoc::Vsd do
     output = xmlpp(<<~"OUTPUT")
         #{HTML_HDR}
              <p class="zzSTDTitle1"/>
-             <div id="H"><h1>1.&#160; Terms and definitions</h1>
+             <div id="H"><h1>1.&#160; Terms, Definitions, Symbols and Abbreviated Terms</h1>
        <p class="TermNum" id="J">1.1.</p>
          <p class="Terms" style="text-align:left;">Term2</p>
        </div>
@@ -295,7 +295,7 @@ RSpec.describe IsoDoc::Vsd do
              <div>
                <h1>2.&#160; Normative references</h1>
              </div>
-             <div id="H"><h1>3.&#160; Terms, definitions, symbols and abbreviated terms</h1>
+             <div id="H"><h1>3.&#160; Terms, Definitions, Symbols and Abbreviated Terms</h1>
        <div id="I">
           <h2>3.1.&#160; Normal Terms</h2>
           <p class="TermNum" id="J">3.1.1.</p>
