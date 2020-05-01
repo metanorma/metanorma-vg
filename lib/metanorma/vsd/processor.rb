@@ -12,8 +12,7 @@ module Metanorma
       def output_formats
         super.merge(
           html: "html",
-          doc: "doc",
-          pdf: "pdf"
+          doc: "doc"
         )
       end
 
@@ -31,8 +30,6 @@ module Metanorma
           IsoDoc::Vsd::HtmlConvert.new(options).convert(outname, isodoc_node)
         when :doc
           IsoDoc::Vsd::WordConvert.new(options).convert(outname, isodoc_node)
-        when :pdf
-          IsoDoc::Generic::PdfConvert.new(options).convert(outname, isodoc_node)
         else
           super
         end

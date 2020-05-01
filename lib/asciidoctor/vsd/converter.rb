@@ -17,10 +17,6 @@ module Asciidoctor
         IsoDoc::Vsd::HtmlConvert.new(html_extract_attributes(node))
       end
 
-      def pdf_converter(node)
-        IsoDoc::Vsd::PdfConvert.new(html_extract_attributes(node))
-      end
-
       def word_converter(node)
         IsoDoc::Vsd::WordConvert.new(doc_extract_attributes(node))
       end
