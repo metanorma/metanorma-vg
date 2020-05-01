@@ -8,7 +8,6 @@ htmlcoverpage: lib/isodoc/vsd/html/html_vsd_titlepage.html
 htmlintropage: lib/isodoc/vsd/html/html_vsd_intro.html
 htmlstylesheet: lib/isodoc/vsd/html/htmlstyle.scss
 scripts: lib/isodoc/vsd/html/scripts.html
-scripts_pdf: lib/isodoc/vsd/html/scripts.pdf.html
 standardstylesheet: lib/isodoc/vsd/html/vsd.scss
 header: lib/isodoc/vsd/html/header.html
 wordcoverpage: lib/isodoc/vsd/html/word_vsd_titlepage.html
