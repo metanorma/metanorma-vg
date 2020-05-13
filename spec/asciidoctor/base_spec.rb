@@ -69,7 +69,7 @@ RSpec.describe Asciidoctor::Vsd do
 <vsd-standard xmlns="https://www.metanorma.org/ns/vsd">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
-  <docidentifier>#{Metanorma::Vsd.configuration.organization_name_long} 1000</docidentifier>
+  <docidentifier type="Vita Green">#{Metanorma::Vsd.configuration.organization_name_long} 1000</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>

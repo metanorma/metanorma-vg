@@ -2,18 +2,16 @@ require "metanorma/processor"
 
 module Metanorma
   module Vsd
-    class Processor < Metanorma::Processor
-      def initialize
-        @short = :vsd
-        @input_format = :asciidoc
-        @asciidoctor_backend = :vsd
+    class Processor < Metanorma::Generic::Processor
+      def configuration
+        Metanorma::Vsd.configuration
       end
 
       def output_formats
         super.merge(
           html: "html",
           doc: "doc"
-        )
+        ).tap { |hs| hs.delete(:pdf) }
       end
 
       def version

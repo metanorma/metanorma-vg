@@ -65,7 +65,7 @@ BLANK_HDR = <<~"HDR"
        <vsd-standard xmlns="https://www.metanorma.org/ns/vsd">
        <bibdata type="standard">
         <title language="en" format="text/plain">Document title</title>
-<docidentifier>Vita Green </docidentifier>
+<docidentifier type="Vita Green">Vita Green </docidentifier>
          <contributor>
            <role type="author"/>
            <organization>
