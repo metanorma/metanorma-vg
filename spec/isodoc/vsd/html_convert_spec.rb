@@ -48,11 +48,43 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-        {:accesseddate=>"XXX", :agency=>"Vita Green", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000", :docnumeric=>nil, :doctitle=>"Main Title", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"Vita Green", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Working Draft", :stageabbr=>"WD", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
+{:accesseddate=>"XXX",
+:agency=>"Vita Green",
+:authors=>[],
+:authors_affiliations=>{},
+:circulateddate=>"XXX",
+:confirmeddate=>"XXX",
+:copieddate=>"XXX",
+:createddate=>"XXX",
+:docnumber=>"1000",
+:docnumeric=>nil,
+:doctitle=>"Main Title",
+:docyear=>"2001",
+:draft=>"3.4",
+:draftinfo=>" (draft 3.4, 2000-01-01)",
+:edition=>nil,
+:implementeddate=>"XXX",
+:issueddate=>"XXX",
+:keywords=>[],
+:logo=>"#{File.join(logoloc, "logo.png")}",
+:obsoleteddate=>"XXX",
+:publisheddate=>"XXX",
+:publisher=>"Vita Green",
+:receiveddate=>"XXX",
+:revdate=>"2000-01-01",
+:revdate_monthyear=>"January 2000",
+:stage=>"Working Draft",
+:stageabbr=>"WD",
+:transmitteddate=>"XXX",
+:unchangeddate=>"XXX",
+:unpublished=>true,
+:updateddate=>"XXX",
+:vote_endeddate=>"XXX",
+:vote_starteddate=>"XXX"}
     OUTPUT
 
     docxml, filename, dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
+    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s.gsub(/, :/, ",\n:"))).to be_equivalent_to output
   end
 
   it "abbreviates committee-draft" do
@@ -70,12 +102,44 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Committee Draft", :stageabbr=>"CD", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
+{:accesseddate=>"XXX",
+:agency=>"",
+:authors=>[],
+:authors_affiliations=>{},
+:circulateddate=>"XXX",
+:confirmeddate=>"XXX",
+:copieddate=>"XXX",
+:createddate=>"XXX",
+:docnumber=>nil,
+:docnumeric=>nil,
+:doctitle=>nil,
+:docyear=>nil,
+:draft=>"3.4",
+:draftinfo=>" (draft 3.4, 2000-01-01)",
+:edition=>nil,
+:implementeddate=>"XXX",
+:issueddate=>"XXX",
+:keywords=>[],
+:logo=>"#{File.join(logoloc, "logo.png")}",
+:obsoleteddate=>"XXX",
+:publisheddate=>"XXX",
+:publisher=>"",
+:receiveddate=>"XXX",
+:revdate=>"2000-01-01",
+:revdate_monthyear=>"January 2000",
+:stage=>"Committee Draft",
+:stageabbr=>"CD",
+:transmitteddate=>"XXX",
+:unchangeddate=>"XXX",
+:unpublished=>true,
+:updateddate=>"XXX",
+:vote_endeddate=>"XXX",
+:vote_starteddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
+    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s.gsub(/, :/, ",\n:"))).to be_equivalent_to output
   end
 
   it "abbreviates draft-standard" do
@@ -93,12 +157,44 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Draft Standard", :stageabbr=>"DS", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
+{:accesseddate=>"XXX",
+:agency=>"",
+:authors=>[],
+:authors_affiliations=>{},
+:circulateddate=>"XXX",
+:confirmeddate=>"XXX",
+:copieddate=>"XXX",
+:createddate=>"XXX",
+:docnumber=>nil,
+:docnumeric=>nil,
+:doctitle=>nil,
+:docyear=>nil,
+:draft=>"3.4",
+:draftinfo=>" (draft 3.4, 2000-01-01)",
+:edition=>nil,
+:implementeddate=>"XXX",
+:issueddate=>"XXX",
+:keywords=>[],
+:logo=>"#{File.join(logoloc, "logo.png")}",
+:obsoleteddate=>"XXX",
+:publisheddate=>"XXX",
+:publisher=>"",
+:receiveddate=>"XXX",
+:revdate=>"2000-01-01",
+:revdate_monthyear=>"January 2000",
+:stage=>"Draft Standard",
+:stageabbr=>"DS",
+:transmitteddate=>"XXX",
+:unchangeddate=>"XXX",
+:unpublished=>true,
+:updateddate=>"XXX",
+:vote_endeddate=>"XXX",
+:vote_starteddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
+    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s.gsub(/, :/, ",\n:"))).to be_equivalent_to output
   end
 
   it "ignores unrecognised status" do
@@ -116,12 +212,44 @@ RSpec.describe IsoDoc::Vsd do
     INPUT
 
     output = <<~"OUTPUT"
-      {:accesseddate=>"XXX", :agency=>"", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>nil, :docnumeric=>nil, :doctitle=>nil, :docyear=>nil, :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>nil, :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :stage=>"Standard", :stageabbr=>"S", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
+{:accesseddate=>"XXX",
+:agency=>"",
+:authors=>[],
+:authors_affiliations=>{},
+:circulateddate=>"XXX",
+:confirmeddate=>"XXX",
+:copieddate=>"XXX",
+:createddate=>"XXX",
+:docnumber=>nil,
+:docnumeric=>nil,
+:doctitle=>nil,
+:docyear=>nil,
+:draft=>"3.4",
+:draftinfo=>" (draft 3.4, 2000-01-01)",
+:edition=>nil,
+:implementeddate=>"XXX",
+:issueddate=>"XXX",
+:keywords=>[],
+:logo=>"#{File.join(logoloc, "logo.png")}",
+:obsoleteddate=>"XXX",
+:publisheddate=>"XXX",
+:publisher=>"",
+:receiveddate=>"XXX",
+:revdate=>"2000-01-01",
+:revdate_monthyear=>"January 2000",
+:stage=>"Standard",
+:stageabbr=>"S",
+:transmitteddate=>"XXX",
+:unchangeddate=>"XXX",
+:unpublished=>true,
+:updateddate=>"XXX",
+:vote_endeddate=>"XXX",
+:vote_starteddate=>"XXX"}
     OUTPUT
 
     csdc = IsoDoc::Vsd::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
+    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s.gsub(/, :/, ",\n:"))).to be_equivalent_to output
   end
 
   it "processes pre" do
