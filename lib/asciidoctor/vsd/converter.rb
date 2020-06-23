@@ -17,7 +17,11 @@ module Asciidoctor
         IsoDoc::Vsd::HtmlConvert.new(html_extract_attributes(node))
       end
 
-      def word_converter(node)
+      def presentation_xml_converter(node)
+        IsoDoc::Vsd::PresentationXMLConvert.new(html_extract_attributes(node))
+      end
+
+      def doc_converter(node)
         IsoDoc::Vsd::WordConvert.new(doc_extract_attributes(node))
       end
     end
