@@ -1,9 +1,9 @@
-require "isodoc/vsd/metadata"
-require "isodoc/vsd/html_convert"
-require "isodoc/vsd/word_convert"
-require "isodoc/vsd/presentation_xml_convert"
+require "isodoc/vg/metadata"
+require "isodoc/vg/html_convert"
+require "isodoc/vg/word_convert"
+require "isodoc/vg/presentation_xml_convert"
 
 module IsoDoc
-  module Vsd
+  module VG
   end
 end

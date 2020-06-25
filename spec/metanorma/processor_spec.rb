@@ -1,12 +1,12 @@
 require "spec_helper"
 
-RSpec.describe Metanorma::Vsd::Processor do
+RSpec.describe Metanorma::VG::Processor do
 
   registry = Metanorma::Registry.instance
-  registry.register(Metanorma::Vsd::Processor)
+  registry.register(Metanorma::VG::Processor)
 
   let(:processor) {
-    registry.find_processor(:vsd)
+    registry.find_processor(:vg)
   }
 
   it "registers against metanorma" do
@@ -15,12 +15,12 @@ RSpec.describe Metanorma::Vsd::Processor do
 
   it "registers output formats against metanorma" do
     expect(processor.output_formats.sort.to_s).to be_equivalent_to <<~"OUTPUT"
-    [[:doc, "doc"], [:html, "html"], [:rxl, "rxl"], [:xml, "xml"]]
+    [[:doc, "doc"], [:html, "html"], [:presentation, "presentation.xml"], [:rxl, "rxl"], [:xml, "xml"]]
     OUTPUT
   end
 
   it "registers version against metanorma" do
-    expect(processor.version.to_s).to match(%r{^Metanorma::Vsd })
+    expect(processor.version.to_s).to match(%r{^Metanorma::VG })
   end
 
   it "generates IsoDoc XML from a blank document" do

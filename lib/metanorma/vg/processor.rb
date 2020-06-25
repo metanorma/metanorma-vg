@@ -1,10 +1,10 @@
 require "metanorma/processor"
 
 module Metanorma
-  module Vsd
+  module VG
     class Processor < Metanorma::Generic::Processor
       def configuration
-        Metanorma::Vsd.configuration
+        Metanorma::VG.configuration
       end
 
       def output_formats
@@ -15,7 +15,7 @@ module Metanorma
       end
 
       def version
-        "Metanorma::Vsd #{Metanorma::Vsd::VERSION}"
+        "Metanorma::VG #{Metanorma::VG::VERSION}"
       end
 
       def input_to_isodoc(file, filename)
@@ -25,9 +25,9 @@ module Metanorma
       def output(isodoc_node, outname, format, options={})
         case format
         when :html
-          IsoDoc::Vsd::HtmlConvert.new(options).convert(outname, isodoc_node)
+          IsoDoc::VG::HtmlConvert.new(options).convert(outname, isodoc_node)
         when :doc
-          IsoDoc::Vsd::WordConvert.new(options).convert(outname, isodoc_node)
+          IsoDoc::VG::WordConvert.new(options).convert(outname, isodoc_node)
         else
           super
         end

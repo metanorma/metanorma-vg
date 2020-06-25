@@ -5,9 +5,9 @@ end
 
 require "bundler/setup"
 require "metanorma"
-require "metanorma-vsd"
-require "metanorma/vsd"
-require "asciidoctor/vsd"
+require "metanorma-vg"
+require "metanorma/vg"
+require "asciidoctor/vg"
 require "rspec/matchers"
 require "equivalent-xml"
 require "htmlentities"
@@ -69,13 +69,13 @@ BLANK_HDR = <<~"HDR"
          <contributor>
            <role type="author"/>
            <organization>
-             <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
+             <name>#{Metanorma::VG.configuration.organization_name_long}</name>
            </organization>
          </contributor>
          <contributor>
            <role type="publisher"/>
            <organization>
-             <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
+             <name>#{Metanorma::VG.configuration.organization_name_long}</name>
            </organization>
          </contributor>
         <language>en</language>
@@ -88,7 +88,7 @@ BLANK_HDR = <<~"HDR"
            <from>#{Time.new.year}</from>
            <owner>
              <organization>
-               <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
+               <name>#{Metanorma::VG.configuration.organization_name_long}</name>
              </organization>
            </owner>
          </copyright>

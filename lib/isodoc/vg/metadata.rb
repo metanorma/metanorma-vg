@@ -1,10 +1,10 @@
 require "isodoc"
 
 module IsoDoc
-  module Vsd
+  module VG
     class Metadata < IsoDoc::Generic::Metadata
       def configuration
-        Metanorma::Vsd.configuration
+        Metanorma::VG.configuration
       end
     end
   end

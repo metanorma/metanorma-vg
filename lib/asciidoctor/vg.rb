@@ -1,8 +1,8 @@
-require "metanorma/vsd/version"
-require_relative "vsd/converter"
+require "metanorma/vg/version"
+require_relative "vg/converter"
 
 module Asciidoctor
-  module Vsd
+  module VG
 
   end
 end

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe Asciidoctor::Vsd do
+RSpec.describe Asciidoctor::VG do
   it "processes a blank document" do
     input = <<~"INPUT"
     #{ASCIIDOC_BLANK_HDR}
@@ -12,7 +12,7 @@ RSpec.describe Asciidoctor::Vsd do
 </vsd-standard>
     OUTPUT
 
-    expect(xmlpp(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
+    expect(xmlpp(Asciidoctor.convert(input, backend: :vg, header_footer: true))).to be_equivalent_to output
   end
 
   it "converts a blank document" do
@@ -30,7 +30,7 @@ RSpec.describe Asciidoctor::Vsd do
     OUTPUT
 
     system "rm -f test.html"
-    expect(xmlpp(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
+    expect(xmlpp(Asciidoctor.convert(input, backend: :vg, header_footer: true))).to be_equivalent_to output
     expect(File.exist?("test.html")).to be true
   end
 
@@ -69,18 +69,18 @@ RSpec.describe Asciidoctor::Vsd do
 <vsd-standard xmlns="https://www.metanorma.org/ns/vsd">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
-  <docidentifier type="Vita Green">#{Metanorma::Vsd.configuration.organization_name_long} 1000</docidentifier>
+  <docidentifier type="Vita Green">#{Metanorma::VG.configuration.organization_name_long} 1000</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
     <organization>
-      <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
+      <name>#{Metanorma::VG.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
+      <name>#{Metanorma::VG.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <edition>2</edition>
@@ -98,7 +98,7 @@ RSpec.describe Asciidoctor::Vsd do
     <from>2001</from>
     <owner>
       <organization>
-        <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
+        <name>#{Metanorma::VG.configuration.organization_name_long}</name>
       </organization>
     </owner>
   </copyright>
@@ -113,7 +113,7 @@ RSpec.describe Asciidoctor::Vsd do
 </vsd-standard>
     OUTPUT
 
-    expect(xmlpp(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
+    expect(xmlpp(Asciidoctor.convert(input, backend: :vg, header_footer: true))).to be_equivalent_to output
   end
 
   it "processes figures" do
@@ -142,7 +142,7 @@ RSpec.describe Asciidoctor::Vsd do
        </vsd-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :vsd, header_footer: true)))).to be_equivalent_to output
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :vg, header_footer: true)))).to be_equivalent_to output
   end
 
   it "strips inline header" do
@@ -165,7 +165,7 @@ RSpec.describe Asciidoctor::Vsd do
        </vsd-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :vsd, header_footer: true)))).to be_equivalent_to output
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :vg, header_footer: true)))).to be_equivalent_to output
   end
 
   it "uses default fonts" do
@@ -177,7 +177,7 @@ RSpec.describe Asciidoctor::Vsd do
     INPUT
 
     system "rm -f test.html"
-    Asciidoctor.convert(input, backend: :vsd, header_footer: true)
+    Asciidoctor.convert(input, backend: :vg, header_footer: true)
 
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r[\bpre[^{]+\{[^}]+font-family: "Space Mono", monospace;]m)
@@ -195,7 +195,7 @@ RSpec.describe Asciidoctor::Vsd do
     INPUT
 
     system "rm -f test.html"
-    Asciidoctor.convert(input, backend: :vsd, header_footer: true)
+    Asciidoctor.convert(input, backend: :vg, header_footer: true)
 
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r[\bpre[^{]+\{[^}]+font-family: "Space Mono", monospace;]m)
@@ -216,7 +216,7 @@ RSpec.describe Asciidoctor::Vsd do
     INPUT
 
     system "rm -f test.html"
-    Asciidoctor.convert(input, backend: :vsd, header_footer: true)
+    Asciidoctor.convert(input, backend: :vg, header_footer: true)
 
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: Andale Mono;]m)

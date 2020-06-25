@@ -1,11 +1,11 @@
 require "spec_helper"
 
-logoloc = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "..", "lib", "isodoc", "vsd", "html"))
+logoloc = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "lib", "isodoc", "vg", "html"))
 
-RSpec.describe IsoDoc::Vsd do
+RSpec.describe IsoDoc::VG do
 
   it "processes default metadata" do
-    csdc = IsoDoc::Vsd::HtmlConvert.new({})
+    csdc = IsoDoc::VG::HtmlConvert.new({})
     input = <<~"INPUT"
 <vsd-standard xmlns="https://open.ribose.com/standards/vsd">
 <bibdata type="standard">
@@ -14,13 +14,13 @@ RSpec.describe IsoDoc::Vsd do
   <contributor>
     <role type="author"/>
     <organization>
-      <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
+      <name>#{Metanorma::VG.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
+      <name>#{Metanorma::VG.configuration.organization_name_long}</name>
     </organization>
   </contributor>
   <language>en</language>
@@ -30,7 +30,7 @@ RSpec.describe IsoDoc::Vsd do
     <from>2001</from>
     <owner>
       <organization>
-        <name>#{Metanorma::Vsd.configuration.organization_name_long}</name>
+        <name>#{Metanorma::VG.configuration.organization_name_long}</name>
       </organization>
     </owner>
   </copyright>
@@ -137,7 +137,7 @@ RSpec.describe IsoDoc::Vsd do
 :vote_starteddate=>"XXX"}
     OUTPUT
 
-    csdc = IsoDoc::Vsd::HtmlConvert.new({})
+    csdc = IsoDoc::VG::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
     expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s.gsub(/, :/, ",\n:"))).to be_equivalent_to output
   end
@@ -192,7 +192,7 @@ RSpec.describe IsoDoc::Vsd do
 :vote_starteddate=>"XXX"}
     OUTPUT
 
-    csdc = IsoDoc::Vsd::HtmlConvert.new({})
+    csdc = IsoDoc::VG::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
     expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s.gsub(/, :/, ",\n:"))).to be_equivalent_to output
   end
@@ -247,7 +247,7 @@ RSpec.describe IsoDoc::Vsd do
 :vote_starteddate=>"XXX"}
     OUTPUT
 
-    csdc = IsoDoc::Vsd::HtmlConvert.new({})
+    csdc = IsoDoc::VG::HtmlConvert.new({})
     docxml, filename, dir = csdc.convert_init(input, "test", true)
     expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s.gsub(/, :/, ",\n:"))).to be_equivalent_to output
   end
@@ -274,7 +274,7 @@ RSpec.describe IsoDoc::Vsd do
     OUTPUT
 
     expect(xmlpp(
-      IsoDoc::Vsd::HtmlConvert.new({}).
+      IsoDoc::VG::HtmlConvert.new({}).
       convert("test", input, true).
       gsub(%r{^.*<body}m, "<body").
       gsub(%r{</body>.*}m, "</body>")
@@ -301,7 +301,7 @@ RSpec.describe IsoDoc::Vsd do
            </div>
          </body>
     OUTPUT
-    stripped_html = xmlpp(IsoDoc::Vsd::HtmlConvert.new({})
+    stripped_html = xmlpp(IsoDoc::VG::HtmlConvert.new({})
                           .convert('test', input, true)
                           .gsub(%r{^.*<body}m, '<body')
                           .gsub(%r{</body>.*}m, '</body>'))
@@ -331,7 +331,7 @@ RSpec.describe IsoDoc::Vsd do
            </div>
          </body>
     OUTPUT
-    stripped_html = xmlpp(IsoDoc::Vsd::HtmlConvert.new({})
+    stripped_html = xmlpp(IsoDoc::VG::HtmlConvert.new({})
                           .convert('test', input, true)
                           .gsub(%r{^.*<body}m, '<body')
                           .gsub(%r{</body>.*}m, '</body>'))
@@ -470,7 +470,7 @@ RSpec.describe IsoDoc::Vsd do
            </div>
          </body>
     OUTPUT
-    stripped_html = xmlpp(IsoDoc::Vsd::HtmlConvert
+    stripped_html = xmlpp(IsoDoc::VG::HtmlConvert
                           .new({})
                           .convert('test', input, true)
                           .gsub(%r{^.*<body}m, '<body')
@@ -493,7 +493,7 @@ RSpec.describe IsoDoc::Vsd do
 </vsd-standard>
     OUTPUT
 
-    expect(xmlpp(Asciidoctor.convert(input, backend: :vsd, header_footer: true))).to be_equivalent_to output
+    expect(xmlpp(Asciidoctor.convert(input, backend: :vg, header_footer: true))).to be_equivalent_to output
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r{jquery\.min\.js})
     expect(html).to match(%r{Overpass})

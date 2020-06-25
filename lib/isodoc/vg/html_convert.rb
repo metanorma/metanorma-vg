@@ -1,15 +1,15 @@
 require "isodoc"
 require "isodoc/generic/html_convert"
-require "isodoc/vsd/metadata"
+require "isodoc/vg/metadata"
 
 module IsoDoc
-  module Vsd
+  module VG
     # A {Converter} implementation that generates HTML output, and a document
     # schema encapsulation of the document for validation
     #
     class HtmlConvert < IsoDoc::Generic::HtmlConvert
       def configuration
-        Metanorma::Vsd.configuration
+        Metanorma::VG.configuration
       end
 
       def metadata_init(lang, script, labels)

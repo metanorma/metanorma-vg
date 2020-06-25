@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-RSpec.describe Metanorma::Vsd do
+RSpec.describe Metanorma::VG do
   it "has a version number" do
-    expect(Metanorma::Vsd::VERSION).not_to be nil
+    expect(Metanorma::VG::VERSION).not_to be nil
   end
   describe '#configuration' do
     it 'has `configuration` attribute accessable' do
-      expect(Metanorma::Vsd.configuration)
-        .to(be_instance_of(Metanorma::Vsd::Configuration))
+      expect(Metanorma::VG.configuration)
+        .to(be_instance_of(Metanorma::VG::Configuration))
     end
 
     context 'default attributes' do
-      subject(:config) { Metanorma::Vsd.configuration }
+      subject(:config) { Metanorma::VG.configuration }
       let(:default_organization_name_short) { 'Vita Green' }
       let(:default_organization_name_long) { 'Vita Green' }
       let(:default_document_namespace) do
@@ -29,13 +29,13 @@ RSpec.describe Metanorma::Vsd do
     end
 
     context 'attribute setters' do
-      subject(:config) { Metanorma::Vsd.configuration }
+      subject(:config) { Metanorma::VG.configuration }
       let(:organization_name_short) { 'Test' }
       let(:organization_name_long) { 'Test Corp.' }
       let(:document_namespace) { 'https://example.com/' }
 
       it 'sets atrributes' do
-        Metanorma::Vsd.configure do |config|
+        Metanorma::VG.configure do |config|
           config.organization_name_short = organization_name_short
           config.organization_name_long = organization_name_long
           config.document_namespace = document_namespace
