@@ -1,9 +1,9 @@
 require "metanorma"
 require "metanorma-generic"
-require "metanorma/vsd/processor"
+require "metanorma/vg/processor"
 
 module Metanorma
-  module Vsd
+  module VG
     class Configuration < Metanorma::Generic::Configuration
       def initialize(*args)
         super
@@ -29,4 +29,4 @@ module Metanorma
     configure {}
   end
 end
-Metanorma::Registry.instance.register(Metanorma::Vsd::Processor)
+Metanorma::Registry.instance.register(Metanorma::VG::Processor)

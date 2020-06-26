@@ -1,21 +1,23 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "metanorma/vsd/version"
+require "metanorma/vg/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "metanorma-vsd"
-  spec.version       = Metanorma::Vsd::VERSION
+  spec.name          = "metanorma-vg"
+  spec.version       = Metanorma::VG::VERSION
   spec.authors       = ["Ribose Inc."]
   spec.email         = ["open.source@ribose.com"]
 
-  spec.summary       = "metanorma-vsd lets you write RSD in Metanorma."
+  spec.summary       = "metanorma-vg lets you write Vita Green standards in Metanorma."
   spec.description   = <<~DESCRIPTION
-    metanorma-vsd lets you write VSD in Metanorma syntax.
+    metanorma-vg lets you write Vita Green standards in Metanorma syntax.
 
     This gem is in active development.
+
+    Formerly known as metanorma-vsd.
   DESCRIPTION
 
-  spec.homepage      = "https://github.com/metanorma/metanorma-vsd"
+  spec.homepage      = "https://github.com/metanorma/metanorma-vg"
   spec.license       = "BSD-2-Clause"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|

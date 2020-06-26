@@ -1,39 +1,22 @@
-= Metanorma for VSD: Metanorma processor for Vitagreen Standard Documents (VSD)
+= Metanorma for Vita Green: Metanorma processor for Vita Green Standard Documents 
 
-image:https://img.shields.io/gem/v/metanorma-vsd.svg["Gem Version", link="https://rubygems.org/gems/metanorma-vsd"]
-image:https://github.com/metanorma/metanorma-vsd/workflows/macos/badge.svg["Build Status (macOS)", link="https://github.com/metanorma/metanorma-vsd/actions?workflow=macos"]
-image:https://github.com/metanorma/metanorma-vsd/workflows/ubuntu/badge.svg["Build Status (ubuntu)", link="https://github.com/metanorma/metanorma-vsd/actions?workflow=ubuntu"]
-image:https://github.com/metanorma/metanorma-vsd/workflows/windows/badge.svg["Build Status (Windows)", link="https://github.com/metanorma/metanorma-vsd/actions?workflow=windows"]
-image:https://codeclimate.com/github/metanorma/metanorma-vsd/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-vsd"]
-image:https://img.shields.io/github/issues-pr-raw/metanorma/metanorma-vsd.svg["Pull Requests", link="https://github.com/metanorma/metanorma-vsd/pulls"]
-image:https://img.shields.io/github/commits-since/metanorma/metanorma-vsd/latest.svg["Commits since latest",link="https://github.com/metanorma/metanorma-vsd/releases"]
+image:https://img.shields.io/gem/v/metanorma-vg.svg["Gem Version", link="https://rubygems.org/gems/metanorma-vg"]
+image:https://github.com/metanorma/metanorma-vg/workflows/macos/badge.svg["Build Status (macOS)", link="https://github.com/metanorma/metanorma-vg/actions?workflow=macos"]
+image:https://github.com/metanorma/metanorma-vg/workflows/ubuntu/badge.svg["Build Status (ubuntu)", link="https://github.com/metanorma/metanorma-vg/actions?workflow=ubuntu"]
+image:https://github.com/metanorma/metanorma-vg/workflows/windows/badge.svg["Build Status (Windows)", link="https://github.com/metanorma/metanorma-vg/actions?workflow=windows"]
+image:https://codeclimate.com/github/metanorma/metanorma-vg/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-vg"]
+image:https://img.shields.io/github/issues-pr-raw/metanorma/metanorma-vg.svg["Pull Requests", link="https://github.com/metanorma/metanorma-vg/pulls"]
+image:https://img.shields.io/github/commits-since/metanorma/metanorma-vg/latest.svg["Commits since latest",link="https://github.com/metanorma/metanorma-vg/releases"]
+
+_Formerly known as_ `metanorma-vsd`.
 
 == Functionality
 
 This gem processes http://asciidoctor.org/[Asciidoctor] documents following
-a template for generating VSD documents.
+a template for generating Vita Green standards.
 
 The gem currently inherits from the https://github.com/riboseinc/asciidoctor-iso
-gem, and aligns closely to it. Refer to the ISO gem
-for guidance, including https://github.com/riboseinc/asciidoctor-iso/wiki/Guidance-for-authoring
-
-The following outputs are generated.
-
-* (Optional) An HTML preview generated directly from the Asciidoctor document,
-using native Asciidoctor formatting.
-** http://asciimath.org[AsciiMathML] is to be used for mathematical formatting.
-The gem uses the https://github.com/asciidoctor/asciimath[Ruby AsciiMath parser],
-which is syntactically stricter than the common MathJax processor;
-if you do not get expected results, try bracketing terms your in AsciiMathML
-expressions.
-* an XML representation of the document, intended as a document model for VSD
-International Standards.
-* The XML representation is processed in turn to generate the following outputs
-as end deliverable VSD standard drafts.
-** DOC
-** HTML
-
-This AsciiDoc syntax for writing VSD standards is hereby named "AsciiVSD".
+gem, and aligns closely to it. Refer to https://metanorma.com[] for guidance.
 
 == Usage
 
@@ -41,19 +24,19 @@ The preferred way to invoke this gem is via the `metanorma` script:
 
 [source,console]
 ----
-$ metanorma --type vsd a.adoc                   # output HTML and DOC
-$ metanorma --type vsd --extensions html a.adoc # output just HTML
-$ metanorma --type vsd --extensions doc a.adoc  # output just DOC
-$ metanorma --type vsd --extensions xml a.adoc  # output VSD XML
+$ metanorma --type vg a.adoc                   # output HTML and DOC
+$ metanorma --type vg --extensions html a.adoc # output just HTML
+$ metanorma --type vg --extensions doc a.adoc  # output just DOC
+$ metanorma --type vg --extensions xml a.adoc  # output Metanorma XML
 ----
 
-The gem translates the document into VSD XML format, and then
-validates its output against the VSD XML document model; errors are
+The gem translates the document into Metanorma XML format, and then
+validates its output against the Vita Green Metanorma XML document model; errors are
 reported to console against the XML, and are intended for users to
 check that they have provided all necessary components of the
 document.
 
-The gem then converts the XML into HTML and PDF.
+The gem then converts the XML into output formats such as HTML and PDF.
 
 
 === Installation
@@ -65,44 +48,9 @@ scripts such as this one. You need only run the following in a Terminal console:
 [source,console]
 ----
 $ bash <(curl -s https://raw.githubusercontent.com/riboseinc/metanorma-macos-setup/master/metanorma-setup)
-$ gem install metanorma-vsd
+$ gem install metanorma-vg
 ----
 
-
-== Approach
-
-=== Document model
-
-The Vitagreen Standard Document model is an instance of the
-https://github.com/riboseinc/isodoc-models[StandardDocument model].
-
-The VSD format ("VSD XML") intends to introduce rigor into the VSD
-standards authoring process, and is prescribed in a separate document.
-
-VSD XML is still under development, but it already contains all the markup
-needed to render a VSD document into HTML.
-
-WARNING: The current RNG model of VSD XML is out of sync with the UML.
-
-=== Asciidoctor
-
-Asciidoctor has been selected as the authoring tool to generate the document
-model representation of VSD standards. It is a document formatting tool like
-Markdown and DocBook, which combines the relative ease of use of the former
-(using relatively lightweight markup), and the rigor and expressively of the
-latter (it has a well-defined syntax, and was in fact initially developed as a
-DocBook document authoring tool). Asciidoctor has built-in capability to output
-Text, DocBook and HTML; so it can be used to preview the file as it is being
-authored.
-
-Note that in order to generate HTML preview output close to what is intended
-in the VSD standard, the Asciidoc
-document includes a fair amount of formatting instructions (e.g. disabling
-section numbering where appropriate, the titling of Appendixes as Annexes), as
-well as VSD boilerplate text, and predefined section headers (sections are
-recognised by fixed titles such as `Normative References`). Authoring VSD
-standards in this fashion assumes that users will be populating an Asciidoc
-template, and not removing needed formatting instructions.
 
 == Document Attributes
 
@@ -149,22 +97,9 @@ or `provisional`.
 The attribute `:draft:`, if present, includes review notes in the XML output;
 these are otherwise suppressed.
 
-== AsciiVSD features not also present in AsciiISO
-
-* `+[keyword]#...#+`: encodes keywords, such as "MUST", "MUST NOT". (Encoded as
-`<span class="keyword">...</span>`.
-
 == Data Models
 
-The VSD Standard Document format is an instance of the
+The Vita Green Standard Document format is an instance of the
 https://github.com/riboseinc/isodoc-models[StandardDocument model]. Details of
-this general model can be found on its page. Details of the VSD modifications
-to this general model can be found on the https://github.com/riboseinc/metanorma-model-vsd[VSD model]
-repository.
-
-== Examples
-
-* link:spec/examples/rfc6350.adoc[] is an AsciiVSD version of https://tools.ietf.org/html/rfc6350[RFC 6350].
-* link:spec/examples/rfc6350.html[] is an HTML file generated from the AsciiVSD.
-* link:spec/examples/rfc6350.doc[] is a Word document generated from the AsciiVSD.
+this general model can be found on its page. 
 
