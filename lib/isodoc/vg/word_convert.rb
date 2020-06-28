@@ -1,6 +1,6 @@
 require "isodoc"
 require "isodoc/generic/word_convert"
-require "isodoc/vg/metadata"
+require_relative "init"
 
 module IsoDoc
   module VG
@@ -11,9 +11,7 @@ module IsoDoc
         Metanorma::VG.configuration
       end
 
-      def metadata_init(lang, script, labels)
-        @meta = Metadata.new(lang, script, labels)
-      end
+      include Init
     end
   end
 end
