@@ -42,8 +42,9 @@ RSpec.describe Metanorma::VG::Processor do
     input = <<~"INPUT"
     <vsd-standard xmlns="https://metanorma.org/ns/vsd">
       <sections>
-        <terms id="H" obligation="normative"><title>Terms, Definitions, Symbols and Abbreviated Terms</title>
+        <terms id="H" obligation="normative"><title>1.<tab/>Terms, Definitions, Symbols and Abbreviated Terms</title>
           <term id="J">
+          <name>1.1.</name>
             <preferred>Term2</preferred>
           </term>
         </terms>
