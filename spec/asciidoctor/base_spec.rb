@@ -66,7 +66,7 @@ RSpec.describe Asciidoctor::VG do
 
     output = xmlpp(<<~"OUTPUT")
     <?xml version="1.0" encoding="UTF-8"?>
-<vsd-standard xmlns="https://www.metanorma.org/ns/vsd">
+<vsd-standard xmlns="https://www.metanorma.org/ns/vsd" type="semantic" version="#{Metanorma::VG::VERSION}">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
   <docidentifier type="Vita Green">#{Metanorma::VG.configuration.organization_name_long} 1000</docidentifier>

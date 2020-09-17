@@ -403,7 +403,7 @@ RSpec.describe IsoDoc::VG do
     INPUT
 
     output = xmlpp(<<~"OUTPUT")
-    <vsd-standard xmlns='http://riboseinc.com/isoxml'>
+    <vsd-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
          <preface>
            <foreword obligation='informative'>
              <title>Foreword</title>

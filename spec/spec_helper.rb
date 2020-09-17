@@ -62,7 +62,7 @@ HDR
 
 BLANK_HDR = <<~"HDR"
        <?xml version="1.0" encoding="UTF-8"?>
-       <vsd-standard xmlns="https://www.metanorma.org/ns/vsd">
+       <vsd-standard xmlns="https://www.metanorma.org/ns/vsd" type="semantic" version="#{Metanorma::VG::VERSION}">
        <bibdata type="standard">
         <title language="en" format="text/plain">Document title</title>
 <docidentifier type="Vita Green">Vita Green </docidentifier>
