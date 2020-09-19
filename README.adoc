@@ -10,6 +10,8 @@ image:https://img.shields.io/github/commits-since/metanorma/metanorma-vg/latest.
 
 _Formerly known as_ `metanorma-vsd`.
 
+THIS GEM IS FROZEN AND WILL NO LONGER BE ACTIVELY MAINTAINED
+
 == Functionality
 
 This gem processes http://asciidoctor.org/[Asciidoctor] documents following
